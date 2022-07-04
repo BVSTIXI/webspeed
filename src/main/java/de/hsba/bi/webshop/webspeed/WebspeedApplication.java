@@ -10,6 +10,4 @@ public class WebspeedApplication {
         SpringApplication.run(WebspeedApplication.class, args);
     }
 
-    /* Hello
-
 }
