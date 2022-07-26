@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org"
+      xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<body>
+<div layout:fragment="content">
+    <div class="my-4">
+        <h1>Produktübersicht</h1>
+    </div>
+
+    <ul class="list-unstyled">
+        <li th:each="product : ${products}">
+            <a th:href="${'/allproducts/' + product.id}" th:text="${product.name}"></a>
+        </li>
+    </ul>
+
+</div>
+</body>
+</html>

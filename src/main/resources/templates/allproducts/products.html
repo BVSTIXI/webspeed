@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div layout:fragment="content">
+    <div class="my-4">
+        <h1> Produkte</h1>
+
+        <p class="small">
+            <a href="/allproducts/"> zurück zum Menü</a>
+        </p>
+    </div>
+
+    <!-- Tabelle für Fach anzeigen-->
+    <table class="table" th:if="${product != null and !product.entries.empty}">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Kategorie</th>
+            <th>Preis</th>
+        </tr>
+        <tr th:each="entry : ${product.entries}">
+            <td th:text="${#numbers.formatDecimal(entry.id, 1, 2)}"></td>
+            <td th:text="${entry.name}"></td>
+            <td th:text="${entry.category}"></td>
+            <td th:text="${entry.price}"></td>
+        </tr>
+    </table>
+
+    <div>
+        <hr />
+        <h2>Produkt anlegen</h2>
+        <form th:action="${'/allproducts/' + product.id}" method="post" class="form-inline">
+            <input name="name" type="text" placeholder="Produktname" class="form-control mr-2">
+            <input name="category" type="text" placeholder="Kategorie" class="form-control mr-2">
+            <input name="price" type="number" placeholder="0" class="form-control mr-2">
+            <button type="submit" class="btn btn-primary">Eintragen</button>
+        </form>
+    </div>
+
+    <hr/>
+</div>
+</body>
+</html>
