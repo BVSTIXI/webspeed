@@ -19,8 +19,13 @@ public class TestDataCreator {
     public void init() {
         Product product = new Product();
         product.setName("Kuchen");
-        product.getEntries().add(new ProductEntry(1L,"Kuchen",new BigDecimal(9.99),"Lecker Kuchen","Jakob","Aylin",
+        product.getEntries().add(new ProductEntry(1L,"Kuchen",new Double(9.99),"Lecker Kuchen","Jakob","Aylin",
                 "Lebensmittel", "Sehr gut",1.00,0.00,false, false, false));
         productRepository.save(product);
+        Product product2 = new Product();
+        product2.setName("Katze");
+        product2.getEntries().add(new ProductEntry(2L,"Katze",new Double(24.99),"Gatze","Basti","",
+                "Haustier", "Sehr gut",1.00,0.00,false, false, false));
+        productRepository.save(product2);
     }
 }

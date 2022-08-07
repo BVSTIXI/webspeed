@@ -14,7 +14,7 @@ public class ProductEntry {
     private Product product;
     private Long id;
     private String name;
-    private BigDecimal price;
+    private Double price;
     private String description;
     private String seller;
     private String buyer;
@@ -26,7 +26,7 @@ public class ProductEntry {
     private boolean shipped;
     private boolean sale;
 
-    public ProductEntry(Long id, String name, BigDecimal price, String description, String seller, String buyer, String category,
+    public ProductEntry(Long id, String name, Double price, String description, String seller, String buyer, String category,
                         String condition, Double numberAvailable, Double numberSold, boolean sold,
                         boolean shipped, boolean sale) {
         this.name = name;

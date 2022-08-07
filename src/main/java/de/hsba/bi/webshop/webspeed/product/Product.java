@@ -3,7 +3,6 @@ package de.hsba.bi.webshop.webspeed.product;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class Product {
     private String name;
     @Getter
     @Setter
-    private BigDecimal price;
+    private Double price;
     @Getter
     @Setter
     private String description;
