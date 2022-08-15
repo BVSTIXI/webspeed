@@ -21,6 +21,10 @@ public class User implements Comparable<User>{
 
     // public static String getCurrentUsername() {
         // Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        // if (principal instanceof UserDetails) {
+            // return ((UserDetails) principal).getUsername();
+        // }
+        // return null;
     // }
 
     @Setter(AccessLevel.NONE)
@@ -28,12 +32,21 @@ public class User implements Comparable<User>{
     @GeneratedValue
     private Long id;
 
-    @Getter
-    @Setter
     @Basic(optional = false)
     private String name;
 
+    @Basic(optional = false)
+    private String password;
+
+    private String role;
+
     public User(String name){
+        this.name = name;
+    }
+
+    public User(String name, String password, String role) {
+        this.password = password;
+        this.role = role;
         this.name = name;
     }
 
