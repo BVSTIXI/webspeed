@@ -1,8 +1,10 @@
 package de.hsba.bi.webshop.webspeed.user;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
+
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -10,10 +12,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@Getter
+@Setter
 @NoArgsConstructor
 public class User implements Comparable<User>{
 
-    @Getter
+    public static String USER_ROLE = "USER";
+    public static String ADMIN_ROLE = "ADMIN";
+
+    // public static String getCurrentUsername() {
+        // Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    // }
+
+    @Setter(AccessLevel.NONE)
     @Id
     @GeneratedValue
     private Long id;
