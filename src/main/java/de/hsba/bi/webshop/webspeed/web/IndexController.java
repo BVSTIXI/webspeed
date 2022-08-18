@@ -15,4 +15,5 @@ import org.springframework.web.bind.annotation.RequestParam;
         public String index(){
             return "redirect:/allproducts/";
         }
+
 }

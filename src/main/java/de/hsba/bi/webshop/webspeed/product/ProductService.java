@@ -1,40 +1,40 @@
 package de.hsba.bi.webshop.webspeed.product;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class ProductService {
 
-    private final ProductRepository repository;
+    private final ProductRepository productRepository;
 
-    public ProductService(ProductRepository repository) {
-        this.repository = repository;
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
     }
 
-    public Product createProduct(String name) {
+    public List<Product> findAllProducts() {
+        return productRepository.findAll();
+    }
+    public Product createProduct(String name, BigDecimal price) {
         Product product = new Product();
         product.setName(name);
-        return repository.save(product);
+        product.setPrice(price);
+        return productRepository.save(product);
     }
 
     public Product save(Product product) {
-        return repository.save(product);
+        return productRepository.save(product);
     }
 
     public Product getProduct(Long id) {
-        return repository.findbyId(id).orElse(null);
+        return productRepository.findById(id).orElse(null);
     }
 
-    public void addProductEntry(Product product, ProductEntry entry) {
-        entry.setProduct(product);
-        product.getEntries().add(entry);
-    }
-
-    public Collection<Product> getAll() {
-        return repository.findAll();
-    }
 }

@@ -1,16 +1,21 @@
 package de.hsba.bi.webshop.webspeed.product;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import user.User;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
-public class Product {
+@NoArgsConstructor
+public class Product implements Comparable<Product> {
 
     @Id
+    @Getter
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -22,7 +27,7 @@ public class Product {
     @Getter
     @Setter
     @Column(name = "PRODUCT_PRICE", nullable = false, unique = false)
-    private Double price;
+    private BigDecimal price;
 
     @Getter
     @Setter
@@ -49,11 +54,6 @@ public class Product {
     @Column(name = "PRODUCT_SOLD", nullable = true, unique = false)
     private Double numberSold;
 
-    @ManyToOne
-    @Getter
-    private User seller;
-
-
     /*
     @Getter
     @Setter
@@ -75,13 +75,17 @@ public class Product {
     @Setter
     private boolean sale;
     */
+    public Product(String name, BigDecimal price){
+        this.name = name;
+        this.price = price;
+    }
 
-    private List<ProductEntry> entries;
-
-    public List<ProductEntry> getEntries() {
-        if (entries == null) {
-            entries = new ArrayList<>();
-        }
-        return entries;
+    @Override
+    public int compareTo(Product other) {
+        return this.name.compareTo(other.name);
+    }
+    @Override
+    public String toString() {
+        return name;
     }
 }

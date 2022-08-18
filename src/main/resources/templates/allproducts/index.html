@@ -9,18 +9,23 @@
         <h1>Produktübersicht</h1>
     </div>
 
-    <ul class="list-unstyled">
-        <li th:each="product : ${products}">
-            <a th:href="${'/allproducts/' + product.id}" th:text="${product.name}"></a>
-        </li>
-    </ul>
+    <table class="table">
+        <tr>
+            <th>Produkte</th>
+            <th>Preis</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+        </tr>
+    </table>
 
     <div>
         <hr />
         <h2>Produkt anlegen</h2>
         <form th:action="${'/allproducts/'}" method="post" class="form-inline">
             <input name="name" type="text" placeholder="Produktname" class="form-control mr-2">
-            <input name="category" type="text" placeholder="Kategorie" class="form-control mr-2">
             <input name="price" type="number" placeholder="0" class="form-control mr-2">
             <button type="submit" class="btn btn-primary">Eintragen</button>
         </form>
