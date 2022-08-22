@@ -3,12 +3,9 @@ package de.hsba.bi.webshop.webspeed.product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import user.User;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @NoArgsConstructor

@@ -11,7 +11,7 @@ import java.util.function.LongToIntFunction;
 
 @Component
 @RequiredArgsConstructor
-public class TestDataCreator {
+public class TestProductCreator {
 
     private final ProductRepository productRepository;
 

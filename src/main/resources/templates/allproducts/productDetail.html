@@ -13,20 +13,23 @@
     </div>
 
     <!-- Tabelle für Fach anzeigen-->
-    <table class="table" th:if="${product != null and !product.entries.empty}">
+    <table class="table">
         <tr>
             <th>Id</th>
             <th>Name</th>
             <th>Kategorie</th>
             <th>Preis</th>
         </tr>
-        <tr th:each="entry : ${product.entries}">
-            <td th:text="${#numbers.formatDecimal(entry.id, 1, 2)}"></td>
-            <td th:text="${entry.name}"></td>
-            <td th:text="${entry.category}"></td>
-            <td th:text="${entry.price}"></td>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.category}"></td>
+            <td th:text="${product.price}"></td>
         </tr>
     </table>
+    <button>
+        Kaufen
+    </button>
 
     <hr/>
 </div>
