@@ -13,18 +13,26 @@ import javax.persistence.*;
 @Table(name = "SALE")
 public class Sale {
 
-    @EmbeddedId
-    SaleKey id;
+//    @EmbeddedId
+//    SaleKey id;
+//
+    @Id
+    @Getter
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "SALE_ID")
+    private int saleId;
 
     @ManyToOne
-    @MapsId("buyerId")
+    //@MapsId("buyerId")
+    @Getter
     @JoinColumn(name = "BUYER_ID")
     User buyer;
 
     @ManyToOne
-    @MapsId("soldProductId")
+    //@MapsId("soldProductId")
+    @Getter
     @JoinColumn(name = "SOLDPRODUCT_ID")
-    Product product;
+    Product soldProduct;
 
     @Getter
     @Setter
@@ -38,7 +46,7 @@ public class Sale {
 
     public Sale (User buyer, Product product, int numberBought, boolean status) {
         this.buyer = buyer;
-        this.product = product;
+        this.soldProduct = product;
         this.numberBought = numberBought;
         this.status = status;
     }
