@@ -1,5 +1,6 @@
 package de.hsba.bi.webshop.webspeed.product;
 
+import de.hsba.bi.webshop.webspeed.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +15,8 @@ public class Product implements Comparable<Product> {
     @Id
     @Getter
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name = "PRODUCT_ID")
+    private Long productId;
 
     @Getter
     @Setter
@@ -51,6 +53,9 @@ public class Product implements Comparable<Product> {
     @Column(name = "PRODUCT_SOLD", nullable = true, unique = false)
     private Double numberSold;
 
+    @ManyToOne
+    private User seller;
+
     /*
     @Getter
     @Setter
@@ -70,11 +75,18 @@ public class Product implements Comparable<Product> {
 
     @Getter
     @Setter
-    private boolean sale;
+    private boolean de.hsba.bi.webshop.webspeed.sale;
     */
-    public Product(String name, BigDecimal price){
+    public Product(String name, BigDecimal price, String description, String category, String condition, Double numberAvailable, Double numberSold){
         this.name = name;
         this.price = price;
+        this.description = description;
+        this.category = category;
+        this.condition = condition;
+        this.numberAvailable = numberAvailable;
+        this.numberSold = numberSold;
+        //this.seller = seller;
+
     }
 
     @Override

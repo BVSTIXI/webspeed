@@ -16,7 +16,8 @@ public class User implements Comparable<User> {
     @Id
     @Getter
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name = "USER_ID")
+    private Long userId;
 
     @Getter
     @Setter

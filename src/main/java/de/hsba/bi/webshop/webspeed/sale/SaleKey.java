@@ -7,9 +7,9 @@ import java.io.Serializable;
 @Embeddable
 public class SaleKey implements Serializable {
 
-    @Column(name = "USER_ID")
-    Long userId;
+    @Column(name = "BUYER_ID")
+    Long buyerId;
 
-    @Column(name = "PRODUCT_ID")
-    Long productId;
+    @Column(name = "SOLDPRODUCT_ID")
+    Long soldProductId;
 }

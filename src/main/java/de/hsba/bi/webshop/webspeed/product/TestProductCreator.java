@@ -17,6 +17,6 @@ public class TestProductCreator {
 
     @EventListener(ApplicationStartedEvent.class)
     public void init() {
-        Product Testprodukt = productRepository.save(new Product("Katze", new BigDecimal(1000)));
+        Product Testprodukt = productRepository.save(new Product("Katze", new BigDecimal(1000), "graue Katze, stinkt ein wenig", "Haustiere", "gut", new Double(1), new Double(0)));
     }
 }

@@ -3,11 +3,13 @@ package de.hsba.bi.webshop.webspeed.sale;
 import de.hsba.bi.webshop.webspeed.product.Product;
 import de.hsba.bi.webshop.webspeed.user.User;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
 @Table(name = "SALE")
 public class Sale {
 
@@ -15,13 +17,13 @@ public class Sale {
     SaleKey id;
 
     @ManyToOne
-    @MapsId("userId")
-    @JoinColumn(name = "USER_ID")
+    @MapsId("buyerId")
+    @JoinColumn(name = "BUYER_ID")
     User buyer;
 
     @ManyToOne
-    @MapsId("productId")
-    @JoinColumn(name = "PRODUCT_ID")
+    @MapsId("soldProductId")
+    @JoinColumn(name = "SOLDPRODUCT_ID")
     Product product;
 
     @Getter
@@ -34,6 +36,11 @@ public class Sale {
     @Column(name = "ORDER_STATUS", nullable = false, unique = false)
     private boolean status;
 
-
+    public Sale (User buyer, Product product, int numberBought, boolean status) {
+        this.buyer = buyer;
+        this.product = product;
+        this.numberBought = numberBought;
+        this.status = status;
+    }
 
 }
