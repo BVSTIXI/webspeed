@@ -3,7 +3,7 @@
 <body>
 <div layout:fragment="content">
     <div class="my-4">
-        <h1> User </h1>
+        <h1> REGISTRIERUNG </h1>
 
         <p class="small">
             <a href="/allproducts/"> zurück zum Menü</a>
@@ -12,30 +12,49 @@
     </div>
 
     <div>
-        <h3>User im System</h3>
+        <h3>Bitte registrieren Sie sich.</h3>
 
-        <div>
-            <table class="table">
+<!--        <div>-->
+<!--            <table class="table">-->
 
+<!--                <tr>-->
+<!--                    <th>Id</th>-->
+<!--                    <th>Name</th>-->
+<!--                    <th>Username</th>-->
+<!--                </tr>-->
+
+<!--                <tr th:each="user : ${users}">-->
+<!--                    <td th:text="${user.id}"></td>-->
+<!--                    <td th:text="${user.name}"></td>-->
+<!--                    <td th:text="${user.userName}"></td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--        </div>-->
+
+        <form  th:action="${'/user/'}" method="post" class="form-inline">
+            <table>
                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Username</th>
+                    <th>
+                        <input name="name" type="text" placeholder="Name" class="form-control mr-2">
+                    </th>
                 </tr>
-
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.id}"></td>
-                    <td th:text="${user.name}"></td>
-                    <td th:text="${user.userName}"></td>
+                <tr>
+                    <th>
+                        <input name="userName" type="text" placeholder="Username" class="form-control mr-2">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input name="password" type="password" placeholder="Passwort" class="form-control mr-2">
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <button type="submit" class="btn btn-primary">Erstellen</button>
+                    </th>
                 </tr>
             </table>
-        </div>
-        <h3>Neuen User erstellen</h3>
-        <form  th:action="${'/user/'}" method="post" class="form-inline">
-            <input name="name" type="text" placeholder="Name" class="form-control mr-2">
-            <input name="userName" type="text" placeholder="Username" class="form-control mr-2">
-            <input name="password" type="password" placeholder="Passwort" class="form-control mr-2">
-            <button type="submit" class="btn btn-primary">Erstellen</button>
+
         </form>
 
 
