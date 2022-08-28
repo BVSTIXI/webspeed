@@ -54,6 +54,7 @@ public class Product implements Comparable<Product> {
     private Double numberSold;
 
     @ManyToOne
+    @Getter
     private User seller;
 
     /*
@@ -77,7 +78,7 @@ public class Product implements Comparable<Product> {
     @Setter
     private boolean de.hsba.bi.webshop.webspeed.sale;
     */
-    public Product(String name, BigDecimal price, String description, String category, String condition, Double numberAvailable, Double numberSold){
+    public Product(String name, BigDecimal price, String description, String category, String condition, Double numberAvailable, Double numberSold, User seller){
         this.name = name;
         this.price = price;
         this.description = description;
@@ -85,7 +86,7 @@ public class Product implements Comparable<Product> {
         this.condition = condition;
         this.numberAvailable = numberAvailable;
         this.numberSold = numberSold;
-        //this.seller = seller;
+        this.seller = seller;
 
     }
 
