@@ -6,7 +6,25 @@
 <body>
 <div layout:fragment="content">
     <div class="my-4">
-        <h1>Produktübersicht</h1>
+        <table style="border: 1px solid red;">
+            <tr>
+                <th>
+                    <h1>Produktübersicht</h1>
+                </th>
+                <td style="padding-left: 300px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 150px">Item erstellen</button>
+                </td>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 150px">Meine Items</button>
+                </td>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 150px">Meine Käufe</button>
+                </td>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 150px"><a href="/user/" style="color: red">Registrieren</a></button>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <table class="table">
