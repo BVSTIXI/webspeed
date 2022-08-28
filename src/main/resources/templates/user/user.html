@@ -26,15 +26,15 @@
                 <tr th:each="user : ${users}">
                     <td th:text="${user.id}"></td>
                     <td th:text="${user.name}"></td>
-                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.userName}"></td>
                 </tr>
             </table>
         </div>
         <h3>Neuen User erstellen</h3>
         <form  th:action="${'/user/'}" method="post" class="form-inline">
             <input name="name" type="text" placeholder="Name" class="form-control mr-2">
-            <input name="username" type="text" placeholder="Username" class="form-control mr-2">
-            <input name="password" type="text" placeholder="Passwort" class="form-control mr-2">
+            <input name="userName" type="text" placeholder="Username" class="form-control mr-2">
+            <input name="password" type="password" placeholder="Passwort" class="form-control mr-2">
             <button type="submit" class="btn btn-primary">Erstellen</button>
         </form>
 
