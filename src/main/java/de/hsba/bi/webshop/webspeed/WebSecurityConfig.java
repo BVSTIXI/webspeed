@@ -15,15 +15,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
+            .antMatchers("/").permitAll()
                 .antMatchers(HttpMethod.GET, "/allproducts/").permitAll()
+                //.antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
+            .formLogin()
                 .permitAll()
                 .and()
-                .logout()
+            .logout()
                 .logoutSuccessUrl("/allproducts/")
                 .permitAll();
     }
@@ -31,5 +31,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         web.ignoring().antMatchers("/h2-console/**");
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
