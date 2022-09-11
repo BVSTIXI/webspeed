@@ -12,7 +12,7 @@
                     <h1>Produktübersicht</h1>
                 </th>
                 <td style="padding-left: 300px;">
-                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 150px">Item erstellen</button>
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 150px"><a href="/allproducts/createProduct" style="color: red">Item erstellen</a></button>
                 </td>
                 <td style="padding-left: 10px;">
                     <button type="submit" class="btn btn-primary" style="display: inline-block; width: 150px">Meine Items</button>
@@ -40,11 +40,45 @@
     <div>
         <hr />
         <h2>Produkt anlegen</h2>
-        <form th:action="${'/allproducts/'}" method="post" class="form-inline">
-            <input name="name" type="text" placeholder="Produktname" class="form-control mr-2">
-            <input name="price" type="number" placeholder="0" class="form-control mr-2">
+        <div>
+            <form th:action="${'/allproducts/'}" method="post" class="form-inline">
+        <div style="float:">
+            <input name="name" type="text" placeholder="Produktname" class="form-control mr-2" style="display: inline-block; width: 150px; background-color: ghostwhite" >
+        </div>
+        <div style="float:left; clear: left">
+            <input name="price" type="number" placeholder="0" class="form-control mr-2" style="display: inline-block; width: 150px; background-color: ghostwhite">
+        </div>
+        <div>
+            <input name="description" type="text" placeholder="Beschreibung" class="form-control mr-2" style="display: inline-block; width: 150px; background-color: ghostwhite">
+        </div>
+          <!--  <label class="form-control mr-2" >Zustand auswaehlen</label> -->
+        <div>
+            <select name="condition" class="form-control mr-2" style="display: inline-block; width: 350px; background-color: ghostwhite">
+                <option value="">--Zustand auswaehlen--</option>
+                <option value="sehr gut">Sehr gut</option>
+                <option value="okay">Okay</option>
+                <option value="unterdurchschnittlich">Unterdurchschnittlich</option>
+            </select>
+        </div>
+
+            <!-- <input name="condition" type="text" placeholder="Zustand" class="form-control mr-2"> -->
+            <!--<input name="seller" type="text" placeholder="Kategorie" class="form-control mr-2"> -->
+
+        <div>
+        <select name="seller" class="form-control mr-2" style="display: inline-block; width: 350px; background-color: ghostwhite">
+                <option value="">--Kategorie auswaehlen--</option>
+                <option value="autos">Auto, Rad & Boot</option>
+                <option value="elektronik">Elektronik</option>
+                <option value="garten">Haus & Garten</option>
+                <option value="mode">Mode & Beauty</option>
+                <option value="hobby">Freizeit, Hobby & Nachbarschaft</option>
+            </select>
+        </div>
+        <div>
             <button type="submit" class="btn btn-primary">Eintragen</button>
+        </div>
         </form>
+            </div>
     </div>
 
 

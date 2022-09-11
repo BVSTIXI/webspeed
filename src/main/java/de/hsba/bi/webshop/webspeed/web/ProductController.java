@@ -35,14 +35,7 @@ public class ProductController {
 
     @GetMapping(path="/{id}")
     public String show (@PathVariable("id") Long id, Model model) {
-        model.addAttribute("products", productService.getProduct(id));
+        model.addAttribute("products", productService.findAllProducts());
         return "allproducts/productDetail";
     }
-
-    @GetMapping(path="/myProducts")
-    public String showMyProducts(Model model) {
-        model.addAttribute("myProducts", productService.findMyProducts());
-        return "allproducts/myProducts";
-    }
 }
-
