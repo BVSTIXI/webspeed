@@ -38,4 +38,10 @@ public class ProductController {
         model.addAttribute("products", productService.findAllProducts());
         return "allproducts/productDetail";
     }
+
+    @GetMapping(path = "myProducts")
+    public String showMyProducts(Model model) {
+        model.addAttribute("myProducts", productService.findMyProducts());
+        return "allproducts/myProducts";
+    }
 }
