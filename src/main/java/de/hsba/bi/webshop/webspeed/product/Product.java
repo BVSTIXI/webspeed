@@ -78,6 +78,8 @@ public class Product implements Comparable<Product> {
     @Setter
     private boolean de.hsba.bi.webshop.webspeed.sale;
     */
+
+    //TODO Change Constructor, numbersold etc ist not required here
     public Product(String name, BigDecimal price, String description, String category, String condition, Double numberAvailable, Double numberSold, User seller){
         this.name = name;
         this.price = price;
