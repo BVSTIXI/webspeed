@@ -28,8 +28,8 @@
     </div>
 
     <table class="table">
-        <tr>
-            <td th:each="product : ${products}">
+        <tr th:each="product : ${products}">
+            <td>
                 <a th:href="${'/allproducts/' + product.productId}"th:text="${product.name}"></a>
                 <br>
                 <a th:text="${product.price}"></a> <a> € </a>

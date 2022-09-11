@@ -34,8 +34,8 @@ public class User implements Comparable<User> {
     @Column(name= "PASSWORD", nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "seller")
-    private List<Product> offeredProducts;
+    /*@OneToMany(mappedBy = "seller")
+    private List<Product> offeredProducts;*/
 
     public User(String name, String userName, String password){
         this.name = name;

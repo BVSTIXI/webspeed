@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -35,6 +34,10 @@ public class ProductService {
 
     public Product getProduct(Long id) {
         return productRepository.findById(id).orElse(null);
+    }
+
+    public List<Product> findMyProducts() {
+        return productRepository.findBySellerUserId();
     }
 
 }

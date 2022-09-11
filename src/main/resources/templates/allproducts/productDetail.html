@@ -14,37 +14,36 @@
 
     <!-- Tabelle für Fach anzeigen ...-->
     <table class="table">
-        <tr  th:each="product:${products.^[productId==3]}" >
+        <tr  th:each="product:${products}" >
 
             <th>Id</th> <td th:text="${product.productId}"></td>
         </tr>
-        <tr th:each="product:${products.^[productId==3]}" >
+        <tr th:each="product:${products}" >
             <th>Name</th> <td th:text="${product.name}"></td>
         </tr>
-        <tr th:each="product:${products.^[productId==3]}" >
+        <tr th:each="product:${products}" >
             <th>Kategorie</th> <td th:text="${product.category}"></td>
         </tr>
-        <tr th:each="product:${products.^[productId==3]}" >
+        <tr th:each="product:${products}" >
             <th>Preis</th> <td th:text="${product.price}"></td>
         </tr>
-        <tr th:each="product:${products.^[productId==3]}" >
+        <tr th:each="product:${products}" >
             <th>Description</th> <td th:text="${product.description}"></td>
         </tr>
-        <tr th:each="product:${products.^[productId==3]}">
+        <tr th:each="product:${products}">
             <th>Condition</th> <td th:text="${product.condition}"></td>
         </tr>
-        <tr th:each="product:${products.^[productId==3]}" >
+        <tr th:each="product:${products}" >
             <th>Number Available</th> <td th:text="${product.numberAvailable}"></td>
         </tr>
-        <tr th:each="product:${products.^[productId==3]}" >
+        <tr th:each="product:${products}" >
             <th>Number Sold</th> <td th:text="${product.numberSold}"></td>
         </tr>
     </table>
+    <hr/>
     <button>
         Kaufen
     </button>
-
-    <hr/>
 </div>
 </body>
 </html>
