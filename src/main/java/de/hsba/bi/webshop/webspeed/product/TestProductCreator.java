@@ -24,8 +24,8 @@ public class TestProductCreator {
 
     @EventListener(ApplicationStartedEvent.class)
     public void init() {
-        User testUser1 = userRepository.save(new User("Jakob","TestUser1","12345"));
-        User testUser2 = userRepository.save(new User("Niklas","TestUser2","12345"));
+        User testUser1 = userRepository.save(new User("Jakob","TestUser1","$2a$12$k20SYS5padgkkHZnvAOwK.PFP4ZgrbzvwHLRF76o3QXykr55MyNWO"));
+        User testUser2 = userRepository.save(new User("Niklas","TestUser2","$2a$12$k20SYS5padgkkHZnvAOwK.PFP4ZgrbzvwHLRF76o3QXykr55MyNWO"));
 
         Product testprodukt1 = productRepository.save(new Product("Katze", new BigDecimal(1000), "graue Katze, stinkt ein wenig", "Haustiere", "gut", new Double(1), new Double(12), testUser1));
         Product testprodukt2 = productRepository.save(new Product("Hund", new BigDecimal(300), "schwarzer Hund", "Haustiere", "gebraucht", new Double(1), new Double(0), testUser1));
