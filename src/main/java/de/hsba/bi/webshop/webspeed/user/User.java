@@ -4,6 +4,8 @@ import de.hsba.bi.webshop.webspeed.product.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,6 +14,15 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 public class User implements Comparable<User> {
+
+    public static String getCurrentUsername() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            return ((UserDetails) principal).getUsername();
+        }
+        return null;
+    }
+
 
     @Id
     @Getter

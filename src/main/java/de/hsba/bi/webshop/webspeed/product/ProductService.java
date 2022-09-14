@@ -1,5 +1,7 @@
 package de.hsba.bi.webshop.webspeed.product;
 
+import de.hsba.bi.webshop.webspeed.user.UserRepository;
+import de.hsba.bi.webshop.webspeed.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import java.util.List;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final UserService userService;
 
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
@@ -37,7 +40,8 @@ public class ProductService {
     }
 
     public List<Product> findMyProducts() {
-        return productRepository.findBySellerUserId();
+        Long search = userService.findCurrentUser().getUserId();
+        return productRepository.findBySellerUserId(search);
     }
 
 }

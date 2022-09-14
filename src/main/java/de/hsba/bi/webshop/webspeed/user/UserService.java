@@ -31,9 +31,8 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getCurrentUser() {
-        //TODO get currentUser from Spring Security Context holder
-        //return thisUser;
-        return null;
+
+    public User findCurrentUser() {
+        return userRepository.findByUserName(User.getCurrentUsername());
     }
 }
