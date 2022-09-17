@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -42,6 +43,10 @@ public class ProductService {
     public List<Product> findMyProducts() {
         Long search = userService.findCurrentUser().getUserId();
         return productRepository.findBySellerUserId(search);
+    }
+    public Product findProductById(Long id){
+        if(productRepository.findById(id).isPresent()) return productRepository.findById(id).get();
+        else return null;
     }
 
 }

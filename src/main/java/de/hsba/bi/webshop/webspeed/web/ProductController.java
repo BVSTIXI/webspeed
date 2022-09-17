@@ -1,6 +1,8 @@
 package de.hsba.bi.webshop.webspeed.web;
 
+import de.hsba.bi.webshop.webspeed.error.NotFoundException;
 import de.hsba.bi.webshop.webspeed.product.Product;
+import de.hsba.bi.webshop.webspeed.product.ProductForm;
 import de.hsba.bi.webshop.webspeed.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -35,11 +37,17 @@ public class ProductController {
 
     @GetMapping(path="/{id}")
     public String show (@PathVariable("id") Long id, Model model) {
-        model.addAttribute("products", productService.getProduct(id));
+        if(productService.findProductById(id) == null) throw new NotFoundException();
+        model.addAttribute("products", productService.findProductById(id));
         return "allproducts/productDetail";
     }
+    @GetMapping(path="/createProduct{id}")
+    public String showCreate ( Model model) {
+        model.addAttribute("productForm", new ProductForm());
+        return "allproducts/productcreate";
+    }
 
-    @GetMapping(path = "myProducts")
+    @GetMapping(path = "/myProducts")
     public String showMyProducts(Model model) {
         model.addAttribute("myProducts", productService.findMyProducts());
         return "allproducts/myProducts";
