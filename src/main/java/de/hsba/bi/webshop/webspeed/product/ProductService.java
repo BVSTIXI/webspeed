@@ -25,10 +25,17 @@ public class ProductService {
     public List<Product> findAllProducts() {
         return productRepository.findAll();
     }
-    public Product createProduct(String name, BigDecimal price) {
+    public Product createProduct(String name, BigDecimal price, String description, String category, String condition ) {
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);
+product.setDescription(description);
+product.setCategory(category);
+product.setCondition(condition);
+
+
+
+
         return productRepository.save(product);
     }
 
