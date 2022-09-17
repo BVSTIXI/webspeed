@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org"
+      xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<body>
+<div layout:fragment="content">
+  <div>
+    <hr />
+    <h2>Produkt anlegen</h2>
+    <div>
+      <form th:action="${'/allproducts/productEdit'}" method="post" class="form-inline">
+        <div style="">
+          <input name="name" type="text" placeholder="Produktname" th:value="" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite" >
+        </div>
+        <div style="float:left; clear: left">
+          <input name="price" type="number" placeholder="0" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite">
+        </div>
+        <div>
+          <input name="description" type="text" placeholder="Beschreibung" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite">
+        </div>
+        <div>
+          <select name="condition" class="form-control mr-2" style="display: inline-block; width: 350px; background-color: ghostwhite">
+            <option value="">--Zustand auswaehlen--</option>
+            <option value="sehr gut">Sehr gut</option>
+            <option value="okay">Okay</option>
+            <option value="unterdurchschnittlich">Unterdurchschnittlich</option>
+          </select>
+        </div>
+
+        <div>
+          <select name="seller" class="form-control mr-2" style="display: inline-block; width: 350px; background-color: ghostwhite">
+            <option value="">--Kategorie auswaehlen--</option>
+            <option value="autos">Auto, Rad & Boot</option>
+            <option value="elektronik">Elektronik</option>
+            <option value="garten">Haus & Garten</option>
+            <option value="mode">Mode & Beauty</option>
+            <option value="hobby">Freizeit, Hobby & Nachbarschaft</option>
+          </select>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Eintragen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>
