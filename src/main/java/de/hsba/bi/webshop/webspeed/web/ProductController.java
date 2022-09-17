@@ -30,8 +30,8 @@ public class ProductController {
     }
 
     @PostMapping
-    public String create(String name, BigDecimal price) {
-        Product product = productService.createProduct(name, price);
+    public String create(String name, BigDecimal price, String description, String category, String condition) {
+        Product product = productService.createProduct(name, price, description, category, condition);
         return "redirect:/allproducts/";
     }
 
