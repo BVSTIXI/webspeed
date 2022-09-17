@@ -12,6 +12,8 @@
                 <a th:href="${'/allproducts/' + product.productId}"th:text="${product.name}"></a>
                 <br>
                 <a th:text="${product.price}"></a> <a> € </a>
+                <br>
+                <button><a th:href="${'/allproducts/productEdit/' + product.productId}">Bearbeiten</a></button>
             </td>
         </tr>
     </table>
