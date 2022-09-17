@@ -20,7 +20,7 @@ public class Sale {
     @Getter
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "SALE_ID")
-    private int saleId;
+    private Long saleId;
 
     @ManyToOne
     //@MapsId("buyerId")
@@ -37,14 +37,14 @@ public class Sale {
     @Getter
     @Setter
     @Column(name = "NUMBER_BOUGHT", nullable = false, unique = false)
-    private int numberBought;
+    private Long numberBought;
 
     @Getter
     @Setter
     @Column(name = "ORDER_STATUS", nullable = false, unique = false)
     private boolean status;
 
-    public Sale (User buyer, Product product, int numberBought, boolean status) {
+    public Sale (User buyer, Product product, Long numberBought, boolean status) {
         this.buyer = buyer;
         this.soldProduct = product;
         this.numberBought = numberBought;

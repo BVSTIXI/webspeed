@@ -41,9 +41,21 @@
         </tr>
     </table>
     <hr/>
-    <button>
-        Kaufen
-    </button>
+    <div>
+        <form th:action="@{'/allproducts/'}" th:object="${sale}" method="post">
+            <div  style="width: auto; height:45px;">
+                <input name="numberBought" type="number" placeholder="1" class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
+            </div>
+            <div>
+                <input name="productId" type="number" placeholder="1" class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
+            </div>
+
+            <button type="submit">
+                Kaufen
+            </button>
+        </form>
+    </div>
+
 </div>
 </body>
 </html>
