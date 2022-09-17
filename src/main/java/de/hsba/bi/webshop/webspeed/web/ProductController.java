@@ -44,7 +44,7 @@ public class ProductController {
     @GetMapping(path="/createProduct{id}")
     public String showCreate ( Model model) {
         model.addAttribute("productForm", new ProductForm());
-        return "allproducts/productcreate";
+        return "allproducts/createProduct";
     }
 
     @GetMapping(path = "/myProducts")
@@ -52,4 +52,6 @@ public class ProductController {
         model.addAttribute("myProducts", productService.findMyProducts());
         return "allproducts/myProducts";
     }
+
+
 }
