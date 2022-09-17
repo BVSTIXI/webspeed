@@ -54,6 +54,6 @@ public class ProductService {
     }
 
     public List<Product> searchProduct (String keyword) {
-        return keyword == null ? productRepository.findAll() : productRepository.findByID(keyword.trim());
+        return keyword == null ? productRepository.findAll() : productRepository.findByName(keyword);
     }
 }
