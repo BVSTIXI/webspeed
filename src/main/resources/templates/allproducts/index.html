@@ -27,6 +27,13 @@
         </table>
     </div>
 
+    <div>
+        <form th:action="@{/allproducts}" method="get">
+            <input name="suche" placeholder="Suchen" th:value="${search}" type="text"/>
+            <button type="submit">Suchen</button>
+        </form>
+    </div>
+
     <table class="table">
         <tr th:each="product : ${products}">
             <td>
