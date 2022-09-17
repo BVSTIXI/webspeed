@@ -7,11 +7,11 @@
 <div layout:fragment="content">
   <div>
     <hr />
-    <h2>Produkt anlegen</h2>
+    <h2>Produkt bearbeiten</h2>
     <div>
       <form th:action="${'/allproducts/createProduct'}" method="post" class="form-inline">
-        <div style="">
-          <input name="name" type="text" placeholder="Produktname" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite" >
+        <div style="" th:each="product:${products}">
+          <input name="name" type="text" placeholder="Produktname" th:value="${product.name}" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite" >
         </div>
         <div style="float:left; clear: left">
           <input name="price" type="number" placeholder="0" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite">
@@ -19,12 +19,12 @@
         <div>
           <input name="description" type="text" placeholder="Beschreibung" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite">
         </div>
-        <div>
+        <div th:each="product:${products}">
           <select name="condition" class="form-control mr-2" style="display: inline-block; width: 350px; background-color: ghostwhite">
             <option value="">--Zustand auswaehlen--</option>
-            <option value="sehr gut">Sehr gut</option>
-            <option value="okay">Okay</option>
-            <option value="unterdurchschnittlich">Unterdurchschnittlich</option>
+            <option value="sehr gut" th:selected="${'sehr gut' == product.condition}">Sehr gut</option>
+            <option value="okay" th:selected="${'okay' == product.condition}">Okay</option>
+            <option value="unterdurchschnittlich" th:selected="${'unterdurchschnittlich' == product.condition}">Unterdurchschnittlich</option>
           </select>
         </div>
 
