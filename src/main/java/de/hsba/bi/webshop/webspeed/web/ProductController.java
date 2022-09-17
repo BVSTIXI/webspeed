@@ -53,5 +53,16 @@ public class ProductController {
         return "allproducts/myProducts";
     }
 
+    /*@GetMapping(path = "productEdit/{id}")
+    public String edit (@PathVariable("id") Long id, Model model) {
+        model.addAttribute("productEdit", productService.getProduct(id));
+        return "allproducts/productEdit";
+    }*/
 
+    @GetMapping(path="productEdit/{id}")
+    public String edit (@PathVariable("id") Long id, Model model) {
+        if (productService.findProductById(id) == null) throw new NotFoundException();
+        model.addAttribute("products", productService.findProductById(id));
+        return "allproducts/productEdit";
+    }
 }

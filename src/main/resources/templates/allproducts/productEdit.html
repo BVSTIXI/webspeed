@@ -9,9 +9,9 @@
     <hr />
     <h2>Produkt anlegen</h2>
     <div>
-      <form th:action="${'/allproducts/productEdit'}" method="post" class="form-inline">
+      <form th:action="${'/allproducts/createProduct'}" method="post" class="form-inline">
         <div style="">
-          <input name="name" type="text" placeholder="Produktname" th:value="" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite" >
+          <input name="name" type="text" placeholder="Produktname" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite" >
         </div>
         <div style="float:left; clear: left">
           <input name="price" type="number" placeholder="0" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite">
