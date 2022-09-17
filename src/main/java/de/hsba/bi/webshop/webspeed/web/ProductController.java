@@ -5,14 +5,17 @@ import de.hsba.bi.webshop.webspeed.product.Product;
 import de.hsba.bi.webshop.webspeed.product.ProductForm;
 import de.hsba.bi.webshop.webspeed.product.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/allproducts")
@@ -23,11 +26,11 @@ public class ProductController {
     private final ProductService productService;
 
     //Abhängigkeit verwenden damit Controller keinen änderbaren Zustand hat
-    @GetMapping
+    /*@GetMapping
     public String index(Model model) {
         model.addAttribute("products", productService.findAllProducts());
         return "allproducts/index";
-    }
+    }*/
 
     @PostMapping
     public String create(String name, BigDecimal price, String description, String category, String condition) {
@@ -64,5 +67,13 @@ public class ProductController {
         if (productService.findProductById(id) == null) throw new NotFoundException();
         model.addAttribute("products", productService.findProductById(id));
         return "allproducts/productEdit";
+    }
+
+    @RequestMapping("/")
+    public String viewProducts(Model model, @Param("keyword") String keyword) {
+        /*List<Product> listProducts = productService.searchProduct(keyword);*/
+        model.addAttribute("products", productService.searchProduct(keyword));
+        model.addAttribute("keyword", keyword);
+        return "/allproducts/index";
     }
 }

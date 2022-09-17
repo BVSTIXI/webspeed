@@ -17,4 +17,7 @@ interface ProductRepository extends JpaRepository<Product,Long> {
     List<Product> findByProductIdAndSellerUserId();
     @Query("select s from Sale s where s.buyer.userId = 1")
     List<Product> findByBuyerUserId();
+
+    @Query("select p from Product p where p.name like %:keyword%")
+    List<Product> findByID(@Param("keyword") String keyword);
 }

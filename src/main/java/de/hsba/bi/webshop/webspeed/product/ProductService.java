@@ -56,4 +56,7 @@ product.setCondition(condition);
         else return null;
     }
 
+    public List<Product> searchProduct (String keyword) {
+        return keyword == null ? productRepository.findAll() : productRepository.findByID(keyword.trim());
+    }
 }
