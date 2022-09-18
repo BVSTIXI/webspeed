@@ -21,10 +21,14 @@ public class SaleService {
 
     public Sale buyProduct(Product product, Long numberBought) {
         User buyer = userService.findCurrentUser();
-        product.setNumberAvailable(product.getNumberAvailable() - numberBought);
+        
+        if (product.getNumberAvailable() - numberBought >= 0) {
+            product.setNumberAvailable(product.getNumberAvailable() - numberBought);
+            Sale sale = new Sale (buyer, product, numberBought, false);
+            return saleRepository.save(sale);
+        } else {
+            return null;
+        }
 
-        Sale sale = new Sale (buyer, product, numberBought, false);
-
-        return saleRepository.save(sale);
     }
 }

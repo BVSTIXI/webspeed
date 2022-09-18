@@ -1,5 +1,6 @@
 package de.hsba.bi.webshop.webspeed.product;
 
+import de.hsba.bi.webshop.webspeed.user.User;
 import de.hsba.bi.webshop.webspeed.user.UserRepository;
 import de.hsba.bi.webshop.webspeed.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -26,15 +27,11 @@ public class ProductService {
         return productRepository.findAll();
     }
     public Product createProduct(String name, BigDecimal price, String description, String category, String condition ) {
-        Product product = new Product();
-        product.setName(name);
-        product.setPrice(price);
-product.setDescription(description);
-product.setCategory(category);
-product.setCondition(condition);
+        Double numberSold = Double.valueOf(0);
+        Double numberAvailable = Double.valueOf(10);
+        User seller = userService.findCurrentUser();
 
-
-
+        Product product = new Product(name, price, description, category, condition, numberAvailable, numberSold, seller);
 
         return productRepository.save(product);
     }
@@ -56,4 +53,7 @@ product.setCondition(condition);
         else return null;
     }
 
+    public List<Product> searchProduct (String keyword) {
+        return keyword == null ? productRepository.findAll() : productRepository.findByName(keyword);
+    }
 }

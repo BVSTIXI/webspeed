@@ -28,8 +28,9 @@
     </div>
 
     <div>
-        <form th:action="@{/allproducts}" method="get">
-            <input name="suche" placeholder="Suchen" th:value="${search}" type="text"/>
+        <form th:action="@{/allproducts}">
+            <input type="text" name="keyword" id="keyword" size="50px" placeholder="Suchen" th:value="${keyword}" required/>
+            &nbsp;
             <button type="submit">Suchen</button>
         </form>
     </div>
