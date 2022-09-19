@@ -26,9 +26,9 @@ public class ProductService {
     public List<Product> findAllProducts() {
         return productRepository.findAll();
     }
-    public Product createProduct(String name, BigDecimal price, String description, String category, String condition ) {
+    public Product createProduct(String name, BigDecimal price, String description, String category, String condition, Double numberAvailable ) {
         Double numberSold = Double.valueOf(0);
-        Double numberAvailable = Double.valueOf(10);
+        //Double numberAvailable = Double.valueOf(10);
         User seller = userService.findCurrentUser();
 
         Product product = new Product(name, price, description, category, condition, numberAvailable, numberSold, seller);

@@ -21,4 +21,7 @@ public class ProductForm {
     @Getter
     @Setter
     private String category;
+    @Getter
+    @Setter
+    private Double numberAvailable;
 }
