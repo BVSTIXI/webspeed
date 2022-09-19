@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org"
+      xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+<body>
+<div layout:fragment="content">
+    <table class="table">
+        <tr th:each="sale : ${myBoughtProducts}">
+            <td>
+                <a th:text="${sale.soldProduct}"></a>
+                <br>
+                <a th:text="${sale.numberBought}"></a>
+                <br>
+                <a th:text="${sale.buyer}"></a>
+                <br>
+                <a th:text="${sale.status}"></a>
+                <br>
+                <button><a>Versenden</a></button>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
