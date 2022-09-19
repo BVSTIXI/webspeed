@@ -1,5 +1,6 @@
 package de.hsba.bi.webshop.webspeed.web.user;
 
+import de.hsba.bi.webshop.webspeed.WebSecurityConfig;
 import de.hsba.bi.webshop.webspeed.user.User;
 import de.hsba.bi.webshop.webspeed.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,8 @@ public class RegisterUserController {
     }
     @PostMapping
     public String create(@RequestParam(name="name")String name,@RequestParam(name="userName") String userName,@RequestParam(name="password") String password) {
-        User user = userService.createUser(name, userName, password);
+        String hashedPassword = WebSecurityConfig.passwordEncoder().encode(password);
+        userService.createUser(name, userName, hashedPassword);
         return "redirect:/user/";
     }
     @GetMapping(path="/{id}")
