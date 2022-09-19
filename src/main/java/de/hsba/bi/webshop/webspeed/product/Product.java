@@ -79,7 +79,7 @@ public class Product implements Comparable<Product> {
     private boolean de.hsba.bi.webshop.webspeed.sale;
     */
 
-    //TODO Change Constructor, numbersold etc ist not required here
+    //Konstruktor für den TestDataCreator
     public Product(String name, BigDecimal price, String description, String category, String condition, Double numberAvailable, Double numberSold, User seller){
         this.name = name;
         this.price = price;
@@ -92,10 +92,20 @@ public class Product implements Comparable<Product> {
 
     }
 
+    public Product(String name, BigDecimal price, String description, Double numberAvailable, User seller) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.numberAvailable = numberAvailable;
+        this.numberSold = (double) 0;
+        this.seller = seller;
+    }
+
     @Override
     public int compareTo(Product other) {
         return this.name.compareTo(other.name);
     }
+    //TODO Warum returnt das den Name und nicht den userName? Brauchen wir den Name überhaupt? ~Niklas
     @Override
     public String toString() {
         return name;
