@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -19,16 +20,23 @@ public class SaleService {
     private final ProductService productService;
     private final UserService userService;
 
-    public Sale buyProduct(Product product, Long numberBought) {
-        User buyer = userService.findCurrentUser();
+    //TODO numberSold erhöhen
+    public void saveSale(Sale sale) {
         
-        if (product.getNumberAvailable() - numberBought >= 0) {
-            product.setNumberAvailable(product.getNumberAvailable() - numberBought);
-            Sale sale = new Sale (buyer, product, numberBought, false);
-            return saleRepository.save(sale);
-        } else {
-            return null;
-        }
+        if (sale.soldProduct.getNumberAvailable() - sale.getNumberBought() >= 0) {
+            sale.soldProduct.setNumberAvailable(sale.soldProduct.getNumberAvailable() - sale.getNumberBought());
 
+            saleRepository.save(sale);
+        }
+    }
+
+    public List<Sale> findMySales() {
+        Long sellerSearch = userService.findCurrentUser().getUserId();
+        return saleRepository.findBySoldProductsUserId(sellerSearch);
+    }
+
+    public List<Sale> findMyBoughtProducts() {
+        Long buyerSearch = userService.findCurrentUser().getUserId();
+        return saleRepository.findByBuyerUserId(buyerSearch);
     }
 }

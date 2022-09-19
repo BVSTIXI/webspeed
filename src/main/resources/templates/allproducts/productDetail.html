@@ -14,41 +14,42 @@
 
     <!-- Tabelle für Fach anzeigen ...-->
     <table class="table">
-        <tr  th:each="product:${products}" >
+        <tr >
 
             <th>Id</th> <td th:text="${product.productId}"></td>
         </tr>
-        <tr th:each="product:${products}" >
+        <tr>
             <th>Name</th> <td th:text="${product.name}"></td>
         </tr>
-        <tr th:each="product:${products}" >
+        <tr>
             <th>Kategorie</th> <td th:text="${product.category}"></td>
         </tr>
-        <tr th:each="product:${products}" >
+        <tr>
             <th>Preis</th> <td th:text="${product.price}"></td>
         </tr>
-        <tr th:each="product:${products}" >
+        <tr>
             <th>Description</th> <td th:text="${product.description}"></td>
         </tr>
-        <tr th:each="product:${products}">
+        <tr>
             <th>Condition</th> <td th:text="${product.condition}"></td>
         </tr>
-        <tr th:each="product:${products}" >
+        <tr>
             <th>Number Available</th> <td th:text="${product.numberAvailable}"></td>
         </tr>
-        <tr th:each="product:${products}" >
+        <tr>
             <th>Number Sold</th> <td th:text="${product.numberSold}"></td>
         </tr>
     </table>
     <hr/>
     <div>
-        <form th:action="@{'/allproducts/'}" th:object="${sale}" method="post">
+        <!--<form th:action="${'/allproducts/buy/'}" th:object="${sale}" method="post">-->
+        <form th:action="${'/allproducts/buy/'+product.productId}" method="post">
             <div  style="width: auto; height:45px;">
                 <input name="numberBought" type="number" placeholder="1" class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
             </div>
-            <div>
+            <!--<div>
                 <input name="productId" type="number" placeholder="1" class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
-            </div>
+            </div>-->
 
             <button type="submit">
                 Kaufen

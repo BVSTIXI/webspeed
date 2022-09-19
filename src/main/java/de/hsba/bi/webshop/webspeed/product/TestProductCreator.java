@@ -32,7 +32,7 @@ public class TestProductCreator {
         Product testprodukt3 = productRepository.save(new Product("Golf Cabrio", new BigDecimal(10000), "Neuwagen, 100k Kilometer", "autos", "unterdurchschnittlich", new Double(6), new Double(5), testUser2));
 
 
-        Sale testSale1 = saleRepository.save(new Sale(testUser2, testprodukt1, 12L, false));
-        Sale testSale2 = saleRepository.save(new Sale(testUser1, testprodukt3, 5L, true));
+        Sale testSale1 = saleRepository.save(new Sale(testUser2, testprodukt1, 12L));
+        Sale testSale2 = saleRepository.save(new Sale(testUser1, testprodukt3, 5L));
     }
 }
