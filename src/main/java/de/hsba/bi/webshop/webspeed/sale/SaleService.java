@@ -1,9 +1,6 @@
 package de.hsba.bi.webshop.webspeed.sale;
 
-import de.hsba.bi.webshop.webspeed.product.Product;
 import de.hsba.bi.webshop.webspeed.product.ProductService;
-import de.hsba.bi.webshop.webspeed.user.SaleRepository;
-import de.hsba.bi.webshop.webspeed.user.User;
 import de.hsba.bi.webshop.webspeed.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,7 +19,7 @@ public class SaleService {
 
     //TODO numberSold erhöhen
     public void saveSale(Sale sale) {
-        
+
         if (sale.soldProduct.getNumberAvailable() - sale.getNumberBought() >= 0) {
             sale.soldProduct.setNumberAvailable(sale.soldProduct.getNumberAvailable() - sale.getNumberBought());
 
@@ -40,3 +37,4 @@ public class SaleService {
         return saleRepository.findByBuyerUserId(buyerSearch);
     }
 }
+

@@ -41,7 +41,7 @@
         </tr>
     </table>
     <hr/>
-    <div>
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
         <!--<form th:action="${'/allproducts/buy/'}" th:object="${sale}" method="post">-->
         <form th:action="${'/allproducts/buy/'+product.productId}" method="post">
             <div  style="width: auto; height:45px;">

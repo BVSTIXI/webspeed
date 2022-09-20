@@ -1,6 +1,6 @@
 package de.hsba.bi.webshop.webspeed.user;
 
-import de.hsba.bi.webshop.webspeed.product.Product;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,7 +8,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Table(name="Users")
 @Entity
@@ -47,6 +46,7 @@ public class User implements Comparable<User> {
 
     /*@OneToMany(mappedBy = "seller")
     private List<Product> offeredProducts;*/
+
 
     public User(String name, String userName, String password){
         this.name = name;

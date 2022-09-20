@@ -2,12 +2,16 @@
 <html xmlns:th ="http://www.thymeleaf.org"
       xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">>
+
 <body>
 <div layout:fragment="content">
+
     <table class="table">
         <tr th:each="sale : ${mySales}">
             <td>
                 <a th:text="${sale.soldProduct}"></a>
+                <br>
+                <a th:text="${sale.soldProduct.price}"></a>
                 <br>
                 <a th:text="${sale.numberBought}"></a>
                 <br>

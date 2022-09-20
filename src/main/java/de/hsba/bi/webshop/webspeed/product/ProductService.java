@@ -1,7 +1,6 @@
 package de.hsba.bi.webshop.webspeed.product;
 
 import de.hsba.bi.webshop.webspeed.user.User;
-import de.hsba.bi.webshop.webspeed.user.UserRepository;
 import de.hsba.bi.webshop.webspeed.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
