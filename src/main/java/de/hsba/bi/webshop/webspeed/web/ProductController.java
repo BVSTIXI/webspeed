@@ -24,11 +24,20 @@ public class ProductController {
     private final SaleService saleService;
 
     //Abhängigkeit verwenden damit Controller keinen änderbaren Zustand hat
+    //TODO Das ist wahrscheinlich ein Part von Basti; herausfinden, warum der bums mit dem Teil nicht funktioniert
     @GetMapping
+    public String viewProducts(Model model, @Param("keyword") String keyword) {
+        //List<Product> listProducts = productService.searchProduct(keyword);
+        model.addAttribute("products", productService.searchProduct(keyword));
+        model.addAttribute("keyword", keyword);
+        return "/allproducts/index";
+    }
+
+    /*@GetMapping
     public String index(Model model) {
         model.addAttribute("products", productService.findAllProducts());
         return "allproducts/index";
-    }
+    }*/
 
     @PostMapping()
     public String create(@RequestParam String name, @RequestParam BigDecimal price, @RequestParam String description, @RequestParam String category, @RequestParam String condition, @RequestParam Double numberAvailable) {
@@ -71,16 +80,6 @@ public class ProductController {
         model.addAttribute("products", productService.findProductById(id));
         return "allproducts/productEdit";
     }
-
-
-    //TODO Das ist wahrscheinlich ein Part von Basti; herausfinden, warum der bums mit dem Teil nicht funktioniert
-    /*@RequestMapping("/")
-    public String viewProducts(Model model, @Param("keyword") String keyword) {
-        //List<Product> listProducts = productService.searchProduct(keyword);
-        model.addAttribute("products", productService.searchProduct(keyword));
-        model.addAttribute("keyword", keyword);
-        return "/allproducts/index";
-    }*/
 
 
 }
