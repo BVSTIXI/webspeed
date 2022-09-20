@@ -1,7 +1,6 @@
 package de.hsba.bi.webshop.webspeed.product;
 
 import de.hsba.bi.webshop.webspeed.user.User;
-import de.hsba.bi.webshop.webspeed.user.UserRepository;
 import de.hsba.bi.webshop.webspeed.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,11 +25,14 @@ public class ProductService {
         return productRepository.findAll();
     }
     public Product createProduct(String name, BigDecimal price, String description, String category, String condition, Double numberAvailable ) {
-        Double numberSold = Double.valueOf(0);
-        //Double numberAvailable = Double.valueOf(10);
         User seller = userService.findCurrentUser();
-
-        Product product = new Product(name, price, description, category, condition, numberAvailable, numberSold, seller);
+        Product product = new Product(name, price, description, numberAvailable, seller);
+        if (!category.isEmpty()) {
+            product.setCategory(category);
+        }
+        if (!condition.isEmpty()) {
+            product.setCondition(condition);
+        }
 
         return productRepository.save(product);
     }
@@ -54,6 +55,6 @@ public class ProductService {
     }
 
     public List<Product> searchProduct (String keyword) {
-        return keyword == null ? productRepository.findAll() : productRepository.findByName(keyword);
+        return keyword == null ? productRepository.findAll() : productRepository.findByName(keyword.trim());
     }
 }

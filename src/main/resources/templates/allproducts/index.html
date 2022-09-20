@@ -6,28 +6,31 @@
 <body>
 <div layout:fragment="content">
     <div class="my-4">
-        <table style="border: 1px solid red;">
+        <table>
             <tr>
                 <th>
                     <h1>Produktübersicht</h1>
                 </th>
-                <td style="padding-left: 300px;">
-                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 150px"><a href="/allproducts/createProduct" style="color: red">Item erstellen</a></button>
+                <td style="padding-left: 50px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/allproducts/createProduct" style="color: white">Item erstellen</a></button>
                 </td>
                 <td style="padding-left: 10px;">
-                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 150px"><a href="/allproducts/myProducts" style="color: red">Meine Items</a></button>
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/user/myProducts" style="color: white">Meine Items</a></button>
                 </td>
                 <td style="padding-left: 10px;">
-                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 150px"><a href="/allproducts/mySales" style="color: red">Meine Käufe</a></button>
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/user/mySales" style="color: white">Meine Verkäufe</a></button>
                 </td>
                 <td style="padding-left: 10px;">
-                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 150px"><a href="/user/" style="color: red">Registrieren</a></button>
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/user/myBoughtProducts" style="color: white">Meine Käufe</a></button>
+                </td>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/user/" style="color: white">Registrieren</a></button>
                 </td>
             </tr>
         </table>
     </div>
 
-    <div>
+    <div style="padding-bottom: 10px;">
         <form th:action="@{/allproducts}">
             <input type="text" name="keyword" id="keyword" size="50px" placeholder="Suchen" th:value="${keyword}" required/>
             &nbsp;
@@ -41,54 +44,13 @@
                 <a th:href="${'/allproducts/' + product.productId}"th:text="${product.name}"></a>
                 <br>
                 <a th:text="${product.price}"></a> <a> € </a>
+                <br>
+                <a> Products Available: </a><a th:text="${product.numberAvailable}"></a>
+                <br>
+                <a> Products Sold: </a><a th:text="${product.numberSold}"></a>
             </td>
         </tr>
     </table>
-
-    <div>
-        <hr />
-        <h2>Produkt anlegen</h2>
-        <div>
-            <form th:action="${'/allproducts/'}" method="post" class="form-inline">
-        <div style="float:">
-            <input name="name" type="text" placeholder="Produktname" class="form-control mr-2" style="display: inline-block; width: 150px; background-color: ghostwhite" >
-        </div>
-        <div style="float:left; clear: left">
-            <input name="price" type="number" placeholder="0" class="form-control mr-2" style="display: inline-block; width: 150px; background-color: ghostwhite">
-        </div>
-        <div>
-            <input name="description" type="text" placeholder="Beschreibung" class="form-control mr-2" style="display: inline-block; width: 150px; background-color: ghostwhite">
-        </div>
-          <!--  <label class="form-control mr-2" >Zustand auswaehlen</label> -->
-        <div>
-            <select name="condition" class="form-control mr-2" style="display: inline-block; width: 350px; background-color: ghostwhite">
-                <option value="">--Zustand auswaehlen--</option>
-                <option value="sehr gut">Sehr gut</option>
-                <option value="okay">Okay</option>
-                <option value="unterdurchschnittlich">Unterdurchschnittlich</option>
-            </select>
-        </div>
-
-            <!-- <input name="condition" type="text" placeholder="Zustand" class="form-control mr-2"> -->
-            <!--<input name="seller" type="text" placeholder="Kategorie" class="form-control mr-2"> -->
-
-        <div>
-        <select name="seller" class="form-control mr-2" style="display: inline-block; width: 350px; background-color: ghostwhite">
-                <option value="">--Kategorie auswaehlen--</option>
-                <option value="autos">Auto, Rad & Boot</option>
-                <option value="elektronik">Elektronik</option>
-                <option value="garten">Haus & Garten</option>
-                <option value="mode">Mode & Beauty</option>
-                <option value="hobby">Freizeit, Hobby & Nachbarschaft</option>
-            </select>
-        </div>
-        <div>
-            <button type="submit" class="btn btn-primary">Eintragen</button>
-        </div>
-        </form>
-            </div>
-    </div>
-
 
 </div>
 </body>

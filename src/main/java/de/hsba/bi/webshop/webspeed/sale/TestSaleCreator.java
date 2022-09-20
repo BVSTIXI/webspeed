@@ -1,13 +1,10 @@
 package de.hsba.bi.webshop.webspeed.sale;
 
 
-import de.hsba.bi.webshop.webspeed.user.SaleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-
-import java.math.BigDecimal;
 
 @Component
 @RequiredArgsConstructor

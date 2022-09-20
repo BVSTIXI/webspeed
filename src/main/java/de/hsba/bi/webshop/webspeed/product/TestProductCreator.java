@@ -1,7 +1,7 @@
 package de.hsba.bi.webshop.webspeed.product;
 
 import de.hsba.bi.webshop.webspeed.sale.Sale;
-import de.hsba.bi.webshop.webspeed.user.SaleRepository;
+import de.hsba.bi.webshop.webspeed.sale.SaleRepository;
 import de.hsba.bi.webshop.webspeed.user.User;
 import de.hsba.bi.webshop.webspeed.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,8 +10,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.util.function.IntToLongFunction;
-import java.util.function.LongToIntFunction;
 
 @Component
 @RequiredArgsConstructor

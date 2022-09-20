@@ -4,14 +4,17 @@
       layout:decorate="~{layout}">>
 <body>
 <div layout:fragment="content">
+
     <table class="table">
         <tr th:each="sale : ${myBoughtProducts}">
             <td>
                 <a th:text="${sale.soldProduct}"></a>
                 <br>
+                <a th:text="${sale.soldProduct.price}"></a>
+                <br>
                 <a th:text="${sale.numberBought}"></a>
                 <br>
-                <a th:text="${sale.buyer}"></a>
+                <a th:text="${sale.soldProduct.seller}"></a>
                 <br>
                 <a th:text="${sale.status}"></a>
                 <br>
