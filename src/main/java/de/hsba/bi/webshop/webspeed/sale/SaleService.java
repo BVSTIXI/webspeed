@@ -17,11 +17,12 @@ public class SaleService {
     private final ProductService productService;
     private final UserService userService;
 
-    //TODO numberSold erhöhen
+    //TODO einen Fehler schmeißen, wenn es nicht funktioniert hat
     public void saveSale(Sale sale) {
 
-        if (sale.soldProduct.getNumberAvailable() - sale.getNumberBought() >= 0) {
+        if (sale.soldProduct.getNumberAvailable() - sale.getNumberBought() >= 0 && !(sale.soldProduct.getSeller() == sale.getBuyer())) {
             sale.soldProduct.setNumberAvailable(sale.soldProduct.getNumberAvailable() - sale.getNumberBought());
+            sale.soldProduct.setNumberSold(sale.soldProduct.getNumberSold() + sale.getNumberBought());
 
             saleRepository.save(sale);
         }

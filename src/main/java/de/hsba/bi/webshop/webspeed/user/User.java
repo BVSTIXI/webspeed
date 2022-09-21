@@ -36,7 +36,7 @@ public class User implements Comparable<User> {
 
     @Getter
     @Setter
-    @Column(name = "USERNAME", nullable = false, unique = false)
+    @Column(name = "USERNAME", nullable = false, unique = true)
     private String userName;
 
     @Getter

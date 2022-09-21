@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/user")
@@ -21,10 +22,12 @@ public class RegisterUserController {
         return "user/user";
     }
     @PostMapping
-    public String create(@RequestParam(name="name")String name,@RequestParam(name="userName") String userName,@RequestParam(name="password") String password) {
+    public RedirectView create(@RequestParam(name="name")String name,@RequestParam(name="userName") String userName,@RequestParam(name="password") String password) {
         String hashedPassword = WebSecurityConfig.passwordEncoder().encode(password);
         userService.createUser(name, userName, hashedPassword);
-        return "redirect:/user/";
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/allproducts");
+        return redirectView;
     }
     @GetMapping(path="/{id}")
     public String show (@PathVariable("id") Long id, Model model) {

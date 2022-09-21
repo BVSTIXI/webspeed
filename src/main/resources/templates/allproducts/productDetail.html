@@ -40,11 +40,12 @@
         </tr>
     </table>
     <hr/>
+
     <div th:if="${#authorization.expression('isAuthenticated()')}">
         <!--<form th:action="${'/allproducts/buy/'}" th:object="${sale}" method="post">-->
         <form th:action="${'/allproducts/buy/'+product.productId}" method="post">
             <div  style="width: auto; height:45px;">
-                <input name="numberBought" type="number" placeholder="1" class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
+                <input name="numberBought" type="number" min="1" placeholder="1" class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
             </div>
             <!--<div>
                 <input name="productId" type="number" placeholder="1" class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
@@ -54,6 +55,9 @@
                 Kaufen
             </button>
         </form>
+    </div>
+    <div th:unless="${#authorization.expression('isAuthenticated()')}">
+        <button type="submit" class="btn btn-primary" style="display: inline-block; width: 250px;"><a href="/login" style="color: white">Bitte melden Sie sich an, <br> bevor Sie etwas kaufen.</a></button>
     </div>
 
 </div>

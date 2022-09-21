@@ -7,6 +7,7 @@ import de.hsba.bi.webshop.webspeed.sale.Sale;
 import de.hsba.bi.webshop.webspeed.sale.SaleService;
 import de.hsba.bi.webshop.webspeed.user.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +43,7 @@ public class ProductController {
     @PostMapping()
     public String create(@RequestParam String name, @RequestParam BigDecimal price, @RequestParam String description, @RequestParam String category, @RequestParam String condition, @RequestParam Double numberAvailable) {
         productService.createProduct(name, price, description, category, condition, numberAvailable);
-        return "redirect:/allproducts/myProducts";
+        return "redirect:/user/myProducts";
     }
 
     @GetMapping(path="/{id}")
