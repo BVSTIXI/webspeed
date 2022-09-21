@@ -43,7 +43,7 @@ public class ProductController {
     @PostMapping()
     public String create(@RequestParam String name, @RequestParam BigDecimal price, @RequestParam String description, @RequestParam String category, @RequestParam String condition, @RequestParam Double numberAvailable) {
         productService.createProduct(name, price, description, category, condition, numberAvailable);
-        return "redirect:/allproducts/myProducts";
+        return "redirect:/user/myProducts";
     }
 
     @GetMapping(path="/{id}")
