@@ -21,7 +21,6 @@ public class RegisterUserController {
         model.addAttribute("user", userService.findAllUsers());
         return "user/user";
     }
-    //TODO aus irgendeinem Grund muss man sich nach dem ausfüllen des Forms anmelden. Wieso?
     @PostMapping
     public RedirectView create(@RequestParam(name="name")String name,@RequestParam(name="userName") String userName,@RequestParam(name="password") String password) {
         String hashedPassword = WebSecurityConfig.passwordEncoder().encode(password);
