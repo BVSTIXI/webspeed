@@ -40,6 +40,7 @@
         </tr>
     </table>
     <hr/>
+
     <div th:if="${#authorization.expression('isAuthenticated()')}">
         <!--<form th:action="${'/allproducts/buy/'}" th:object="${sale}" method="post">-->
         <form th:action="${'/allproducts/buy/'+product.productId}" method="post">
@@ -55,6 +56,9 @@
             </button>
         </form>
     </div>
+    <!--<div th:unless="${#authorization.expression('isNotAuthenticated()')}">
+        TODO hier einen Login Button anzeigen lassen
+    </div>-->
 
 </div>
 </body>

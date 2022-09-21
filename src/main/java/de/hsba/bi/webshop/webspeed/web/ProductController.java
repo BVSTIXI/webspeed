@@ -7,6 +7,7 @@ import de.hsba.bi.webshop.webspeed.sale.Sale;
 import de.hsba.bi.webshop.webspeed.sale.SaleService;
 import de.hsba.bi.webshop.webspeed.user.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
