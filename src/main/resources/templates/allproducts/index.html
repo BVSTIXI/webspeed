@@ -29,6 +29,9 @@
                 <td th:unless="${#authorization.expression('isAuthenticated()')}" style="padding-left: 10px;">
                     <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/login" style="color: white">Login</a></button>
                 </td>
+                <td th:if="${#authorization.expression('isAuthenticated()')}" style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/logout" style="color: white">Logout</a></button>
+                </td>
             </tr>
         </table>
     </div>
