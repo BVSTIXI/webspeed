@@ -5,7 +5,40 @@
 
 <body>
 <div layout:fragment="content">
-
+    <div class="my-4">
+        <table>
+            <tr>
+                <th>
+                    <h1>Meine Verkäufe</h1>
+                </th>
+                <td style="padding-left: 50px; ">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block;  width: 140px;">
+                        <a href="/allproducts/createProduct" style="color: white; ">Item erstellen</a> </button>
+                </td>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
+                        <a href="/user/myProducts" style="color: white">Meine Produkte</a>
+                    </button>
+                </td>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
+                        <a href="/user/myBoughtProducts" style="color: white">Meine Käufe</a>
+                    </button>
+                </td>
+                <td th:unless="${#authorization.expression('isAuthenticated()')}" style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
+                        <a href="/user/" style="color: white">Registrieren</a>
+                    </button>
+                </td>
+                <td th:unless="${#authorization.expression('isAuthenticated()')}" style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/login" style="color: white">Login</a></button>
+                </td>
+                <td th:if="${#authorization.expression('isAuthenticated()')}" style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/logout" style="color: white">Logout</a></button>
+                </td>
+            </tr>
+        </table>
+    </div>
     <table class="table">
         <tr th:each="sale : ${mySales}">
             <td>
@@ -23,6 +56,13 @@
             </td>
         </tr>
     </table>
+    <div>
+        <br>
+        <br>
+        <p class="small" style="display: inline-block; width: 350px; height:20px; background-color: ghostwhite" >
+            <a href="/allproducts/" style="color:darkviolet"> zurück zum Menü</a>
+        </p>
+    </div>
 </div>
 </body>
 </html>

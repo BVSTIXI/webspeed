@@ -5,10 +5,38 @@
 
 <body>
 <div layout:fragment="content">
+    <div class="my-4">
+        <table>
+            <tr>
+                <th>
+                    <h1>Produkt anlegen</h1>
+                </th>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
+                        <a href="/user/myProducts" style="color: white">Meine Produkte</a>
+                    </button>
+                </td>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
+                        <a href="/user/mySales" style="color: white">Meine Verkäufe</a>
+                    </button>
+                </td>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
+                        <a href="/user/myBoughtProducts" style="color: white">Meine Käufe</a>
+                    </button>
+                </td>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
+                        <a href="/user/" style="color: white">Registrieren</a>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <div style="width: auto; height:1000px; background-color: white">
         <hr/>
-        <h2>Produkt anlegen</h2>
         <div style="width: auto; height:1000px">
             <form th:action="@{'/allproducts/'}" th:object=" ${productForm}" method="post" class="form-inline"  style="display: inline-block; width: 350px; height:700px; background-color: white">
                 <div style="width: auto; height:45px;">
@@ -47,6 +75,13 @@
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary">Eintragen</button>
+                </div>
+                <div>
+                    <br>
+                    <br>
+                    <p class="small" style="display: inline-block; width: 350px; height:20px; background-color: ghostwhite" >
+                        <a href="/allproducts/" style="color:darkviolet"> zurück zum Menü</a>
+                    </p>
                 </div>
             </form>
         </div>
