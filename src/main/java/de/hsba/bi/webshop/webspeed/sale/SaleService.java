@@ -25,7 +25,9 @@ public class SaleService {
             sale.soldProduct.setNumberSold(sale.soldProduct.getNumberSold() + sale.getNumberBought());
 
             saleRepository.save(sale);
-        }
+        } /*else {
+            throw laleluException
+        }*/
     }
 
     public List<Sale> findMySales() {
@@ -36,6 +38,17 @@ public class SaleService {
     public List<Sale> findMyBoughtProducts() {
         Long buyerSearch = userService.findCurrentUser().getUserId();
         return saleRepository.findByBuyerUserId(buyerSearch);
+    }
+
+    public Sale sendProduct(Long productId) {
+        Sale productToEdit = saleRepository.getOne(productId);
+        productToEdit.setStatus(true);
+        return saleRepository.save(productToEdit);
+    }
+
+    public Sale findSaleById(Long id) {
+        if(saleRepository.findById(id).isPresent()) return saleRepository.findById(id).get();
+        else return null;
     }
 }
 

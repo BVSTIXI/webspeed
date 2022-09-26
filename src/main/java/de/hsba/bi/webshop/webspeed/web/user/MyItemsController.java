@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -32,5 +34,18 @@ public class MyItemsController {
     public String showMyBoughtProducts(Model model) {
         model.addAttribute("myBoughtProducts", saleService.findMyBoughtProducts());
         return "user/myBoughtProducts";
+    }
+
+    @GetMapping(path = "/sendConfirm/{id}")
+    public String showConfirm(@PathVariable("id") Long id, Model model) {
+        if (productService.findProductById(id) == null) ; // throw new NotFoundException();
+        model.addAttribute("mySale", saleService.findSaleById(id));
+        return "user/sendConfirm";
+    }
+
+    @PostMapping(path = "/sendConfirm/{id}")
+    public String send(@PathVariable("id") Long id) {
+        saleService.sendProduct(id);
+        return "redirect:/user/mySales";
     }
 }

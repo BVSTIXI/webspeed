@@ -75,11 +75,16 @@ public class ProductController {
         return "allproducts/productEdit";
     }*/
 
-    @GetMapping(path="productEdit/{id}")
-    public String edit (@PathVariable("id") Long id, Model model) {
-        if (productService.findProductById(id) == null); // throw new NotFoundException();
+    @GetMapping(path = "/productEdit/{id}")
+    public String edit(@PathVariable("id") Long id, Model model) {
+        if (productService.findProductById(id) == null) ; // throw new NotFoundException();
         model.addAttribute("products", productService.findProductById(id));
         return "allproducts/productEdit";
+    }
+    @PostMapping(path = "/productEdit/{id}")
+    public String editProduct(@PathVariable("id") Long id, @RequestParam String name, @RequestParam BigDecimal price, @RequestParam String description, @RequestParam String category, @RequestParam String condition, @RequestParam Double numberAvailable) {
+        productService.editProduct(id, name, price, description, category, condition, numberAvailable);
+        return "redirect:/";
     }
 
 

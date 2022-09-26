@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-interface ProductRepository extends JpaRepository<Product,Long> {
+public interface ProductRepository extends JpaRepository<Product,Long> {
 
     @Query("select p from Product p where p.seller.userId = :search")  //
     List<Product> findBySellerUserId(@Param("search") Long search); //
@@ -20,4 +20,7 @@ interface ProductRepository extends JpaRepository<Product,Long> {
 
     @Query("select p from Product p where p.name like %:keyword%")
     List<Product> findByName(@Param("keyword") String keyword);
+
+    /*@Query("select i from Product i where i.numberAvailable > 0 and i.name like %:keyword%")
+    List<Product> findByAvailability(@Param("keyword") String keyword);*/
 }

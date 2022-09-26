@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+<div layout:fragment="content">
+    <div class="my-4">
+        <table>
+            <tr>
+                <th>
+                    <h1>Versandinformationen</h1>
+                </th>
+                <td style="padding-left: 50px; ">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block;  width: 140px;">
+                        <a href="/allproducts/createProduct" style="color: white; ">Item erstellen</a> </button>
+                </td>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
+                        <a href="/user/myProducts" style="color: white">Meine Produkte</a>
+                    </button>
+                </td>
+                <td style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
+                        <a href="/user/myBoughtProducts" style="color: white">Meine Käufe</a>
+                    </button>
+                </td>
+                <td th:unless="${#authorization.expression('isAuthenticated()')}" style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
+                        <a href="/user/" style="color: white">Registrieren</a>
+                    </button>
+                </td>
+                <td th:unless="${#authorization.expression('isAuthenticated()')}" style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/login" style="color: white">Login</a></button>
+                </td>
+                <td th:if="${#authorization.expression('isAuthenticated()')}" style="padding-left: 10px;">
+                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/logout" style="color: white">Logout</a></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Tabelle für Fach anzeigen ...-->
+    <form th:action="${'/user/sendConfirm/' + mySale.saleId}" method="post" class="form-inline">
+        <table class="table">
+            <tr th:each="sale:${mySale}">
+                <td>
+                    <p th:text="${sale.soldProduct}"></p>
+                    <p th:text="${sale.soldProduct.price}"></p>
+                    <p th:unless="${sale.status == true}" th:value="${sale.status}">
+                        <button type="submit">Versenden</button>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

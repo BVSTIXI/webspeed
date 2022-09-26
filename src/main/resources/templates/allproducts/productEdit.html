@@ -5,32 +5,32 @@
 
 <body>
 <div layout:fragment="content">
-  <div>
-    <hr />
+
+  <div style="width: auto; height:1000px; background-color: white">
+    <hr/>
     <h2>Produkt bearbeiten</h2>
-    <div>
-      <form th:action="${'/allproducts/createProduct'}" method="post" class="form-inline">
-        <div style="" th:each="product:${products}">
-          <input name="name" type="text" placeholder="Produktname" th:value="${product.name}" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite" >
+    <div style="width: auto; height:1000px">
+      <form th:action="${'/allproducts/productEdit/' + products.productId}" method="post" class="form-inline"  style="display: inline-block; width: 350px; height:700px; background-color: white">
+        <div style="width: auto; height:45px;" th:each="product:${products}">
+          <input name="name" type="text" placeholder="Produktname" th:value="${product.name}" required class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
         </div>
-        <div style="float:left; clear: left" th:each="product:${products}">
-          <input name="price" type="number" placeholder="0" th:value="${product.price}" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite">
+        <div  style="width: auto; height:45px;" th:each="product:${products}">
+          <input name="price" type="number" min="0" placeholder="Preis" th:value="${product.price}" required class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
         </div>
-        <div th:each="product:${products}">
-          <input name="description" type="text" placeholder="Beschreibung" th:value="${product.description}" class="form-control mr-2" required style="display: inline-block; width: 150px; background-color: ghostwhite">
+        <div style="width: auto; height:45px;" th:each="product:${products}">
+          <input name="description" type="text" placeholder="Beschreibung" th:value="${product.description}" required class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
         </div>
-        <div th:each="product:${products}">
-          <select name="condition" class="form-control mr-2" style="display: inline-block; width: 350px; background-color: ghostwhite">
+        <div style="width: auto; height:45px;" th:each="product:${products}">
+          <select name="condition" class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
             <option value="">--Zustand auswaehlen--</option>
             <option value="sehr gut" th:selected="${'sehr gut' == product.condition}">Sehr gut</option>
             <option value="okay" th:selected="${'okay' == product.condition}">Okay</option>
             <option value="unterdurchschnittlich" th:selected="${'unterdurchschnittlich' == product.condition}">Unterdurchschnittlich</option>
           </select>
         </div>
-
-        <div th:each="product:${products}">
-          <select name="seller" class="form-control mr-2" style="display: inline-block; width: 350px; background-color: ghostwhite">
-            <option value="" >--Kategorie auswaehlen--</option>
+        <div style="width: auto; height:45px;" th:each="product:${products}">
+          <select name="category" class="form-control mr-2" th:value="${product.category}" style=" width:350px; height:38px; background-color: ghostwhite">
+            <option value="">--Kategorie auswaehlen--</option>
             <option value="autos" th:selected="${'autos' == product.category}">Auto, Rad & Boot</option>
             <option value="elektronik" th:selected="${'elektronik' == product.category}">Elektronik</option>
             <option value="garten" th:selected="${'garten' == product.category}">Haus & Garten</option>
@@ -38,13 +38,23 @@
             <option value="hobby" th:selected="${'hobby' == product.category}">Freizeit, Hobby & Nachbarschaft</option>
           </select>
         </div>
+        <div style="width: auto; height:45px;" th:each="product:${products}">
+          <input name="numberAvailable" type="number" min="0" placeholder="Number Available" th:value="${product.numberAvailable}" required class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
+        </div>
         <div>
           <button type="submit" class="btn btn-primary">Eintragen</button>
+        </div>
+
+        <div>
+          <br>
+          <br>
+          <p class="small" style="display: inline-block; width: 350px; height:20px; background-color: ghostwhite" >
+            <a href="/allproducts/" style="color:darkviolet"> zurück zum Menü</a>
+          </p>
         </div>
       </form>
     </div>
   </div>
-
 
 </div>
 </body>

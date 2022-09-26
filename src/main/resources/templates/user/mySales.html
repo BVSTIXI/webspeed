@@ -50,9 +50,14 @@
                 <br>
                 <a th:text="${sale.buyer}"></a>
                 <br>
-                <a th:text="${sale.status}"></a>
+                <!--<a th:text="${sale.status}"></a>-->
                 <br>
-                <button><a>Versenden</a></button>
+                <form th:unless="${sale.status == true}" th:action="${'/user/mySales'}" method="post" class="form-inline">
+                    <button type="submit">
+                        <a th:href="${'/user/sendConfirm/' + sale.saleId}">Versenden</a>
+                    </button>
+                </form>
+                <p th:if="${sale.status == true}">Das Packet wurde versendet.</p>
             </td>
         </tr>
     </table>

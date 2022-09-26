@@ -44,7 +44,7 @@ public class Sale {
     @Column(name = "ORDER_STATUS", nullable = false, unique = false)
     private boolean status;
 
-    public Sale (User buyer, Product product, Long numberBought) {  //TODO status direkt auf false setzen
+    public Sale (User buyer, Product product, Long numberBought) {
         this.buyer = buyer;
         this.soldProduct = product;
         this.numberBought = numberBought;

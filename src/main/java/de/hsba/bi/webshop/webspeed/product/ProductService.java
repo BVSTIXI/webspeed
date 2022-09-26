@@ -24,6 +24,7 @@ public class ProductService {
     public List<Product> findAllProducts() {
         return productRepository.findAll();
     }
+
     public Product createProduct(String name, BigDecimal price, String description, String category, String condition, Double numberAvailable ) {
         User seller = userService.findCurrentUser();
         Product product = new Product(name, price, description, numberAvailable, seller);
@@ -56,5 +57,24 @@ public class ProductService {
 
     public List<Product> searchProduct (String keyword) {
         return keyword == null ? productRepository.findAll() : productRepository.findByName(keyword.trim());
+    }
+
+    /*public List<Product> searchProduct (String keyword, Boolean check) {
+        if (keyword == null && check == null) {
+            productRepository.findAll();
+        }
+        return productRepository.findByAvailability(keyword);
+        *//*return keyword == null ? productRepository.findAll() : productRepository.findByName(keyword.trim());*//*
+    }*/
+
+    public Product editProduct(Long productId, String name, BigDecimal price, String description, String category, String condition, Double numberAvailable) {
+        Product productToEdit = productRepository.getOne(productId);
+        productToEdit.setName(name);
+        productToEdit.setPrice(price);
+        productToEdit.setDescription(description);
+        productToEdit.setCategory(category);
+        productToEdit.setCondition(condition);
+        productToEdit.setNumberAvailable(numberAvailable);
+        return productRepository.save(productToEdit);
     }
 }
