@@ -11,24 +11,31 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+//Klasse, die Testobjekte erzeugt, um die Funktion der Applikation zu testen
 @Component
 @RequiredArgsConstructor
-public class TestProductCreator {
+public class TestDataCreator {
 
+    //Abhängigkeiten
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
     private final SaleRepository saleRepository;
 
-
+    //Die Testobjekte sind auskommentiert, da es sonst mit persistenter Datenbank doppelte Datensätze gäbe
     @EventListener(ApplicationStartedEvent.class)
     public void init() {
-        User testUser1 = userRepository.save(new User("Jakob","TestUser1","$2a$12$k20SYS5padgkkHZnvAOwK.PFP4ZgrbzvwHLRF76o3QXykr55MyNWO"));
+        /*User testUser1 = userRepository.save(new User("Jakob","TestUser1","$2a$12$k20SYS5padgkkHZnvAOwK.PFP4ZgrbzvwHLRF76o3QXykr55MyNWO"));
         User testUser2 = userRepository.save(new User("Niklas","TestUser2","$2a$12$k20SYS5padgkkHZnvAOwK.PFP4ZgrbzvwHLRF76o3QXykr55MyNWO"));
 
         Product testprodukt1 = productRepository.save(new Product("iPhone", new BigDecimal(1000), "altes iPhone", "elektronik", "unterdurchschnittlich", new Double(1), new Double(12), testUser1));
         Product testprodukt2 = productRepository.save(new Product("Laptop", new BigDecimal(300), "neuer Laptop", "elektronik", "sehr gut", new Double(1), new Double(0), testUser1));
         Product testprodukt3 = productRepository.save(new Product("Golf Cabrio", new BigDecimal(10000), "Neuwagen, 100k Kilometer", "autos", "unterdurchschnittlich", new Double(6), new Double(5), testUser2));
 
+        Sale testSale1 = saleRepository.save(new Sale(testUser2, testprodukt1, 12L));
+        Sale testSale2 = saleRepository.save(new Sale(testUser1, testprodukt3, 5L));*/
+
+
+        //weitere Testdaten zum CSS-testen
         /*Product testprodukt4 = productRepository.save(new Product("Katze", new BigDecimal(1000), "graue Katze, stinkt ein wenig", "garten", "sehr gut", new Double(1), new Double(12), testUser1));
         Product testprodukt5 = productRepository.save(new Product("Hund", new BigDecimal(300), "schwarzer Hund", "mode", "unterdurchschnittlich", new Double(1), new Double(0), testUser1));
         Product testprodukt6 = productRepository.save(new Product("Golf Cabrio", new BigDecimal(10000), "Neuwagen, 100k Kilometer", "autos", "unterdurchschnittlich", new Double(6), new Double(5), testUser2));
@@ -52,7 +59,6 @@ public class TestProductCreator {
         Product testprodukt24 = productRepository.save(new Product("Golf Cabrio", new BigDecimal(10000), "Neuwagen, 100k Kilometer", "autos", "unterdurchschnittlich", new Double(6), new Double(5), testUser2));
 */
 
-        Sale testSale1 = saleRepository.save(new Sale(testUser2, testprodukt1, 12L));
-        Sale testSale2 = saleRepository.save(new Sale(testUser1, testprodukt3, 5L));
+
     }
 }

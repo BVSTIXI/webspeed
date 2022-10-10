@@ -20,7 +20,7 @@ class SaleUnitTests {
     private SaleRepository saleRepositoryMock;
 
     @InjectMocks
-    private SaleService testService;
+    private SaleService saleServiceMock;
     /*Product testprodukt1 = productRepository.save(new Product("Katze", new BigDecimal(1000), "graue Katze, stinkt ein wenig", "garten", "sehr gut", new Double(1), new Double(12), testUser1));
     Product testprodukt2 = productRepository.save(new Product("Hund", new BigDecimal(300), "schwarzer Hund", "mode", "unterdurchschnittlich", new Double(1), new Double(0), testUser1));
     Product testprodukt3 = productRepository.save(new Product("Golf Cabrio", new BigDecimal(10000), "Neuwagen, 100k Kilometer", "autos", "unterdurchschnittlich", new Double(6), new Double(5), testUser2));

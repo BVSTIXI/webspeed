@@ -2,63 +2,128 @@
 <html xmlns:th ="http://www.thymeleaf.org"
       xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
+<head>
+    <!-- Hier wird die Verbindung zur CSS-Datei erstellt -->
+    <link rel="stylesheet" href="" th:href="@{/CSS/mystyle.css}" />
+    <!-- Hier wird der Javascript für die Togglemenü addiert-->
+    <script type="text/javascript" >
+        function togglemenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
+    </script>
+</head>
 
 <body>
-<div layout:fragment="content">
+<!-- Die Klasse "maincontent" ist für die Gestaltung des Haupt-DIVs erstellt -->
+<div layout:fragment="content" style="position: absolute" class="maincontent">
+    <header>
+        <div>
+            <!-- FROM -->
+            <!-- Dieser Java-Script wird für die Togglemenu eingebaut -->
+            <div id="sidebar" onclick="togglemenu()">
+                <!-- Diese Klasse ist für die drei Linien der Togglemenü erstellt -->
+                <div class="toggle-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/allproducts/createProduct"  class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header" >
+                                    Produkt einstellen </button>
+                            </a>
+                        </li>
+                        <li>
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/user/mySales" class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header">
+                                    Meine Verkäufe
+                                </button>
+                            </a>
+                        </li>
+                        <li>
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/user/myBoughtProducts" class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header">
+                                    Meine Käufe
+                                </button>
+                            </a>
+                        </li>
+                        <li th:unless="${#authorization.expression('isAuthenticated()')}">
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/user" class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header">
+                                    Registrieren
+                                </button>
+                            </a>
+                        </li>
+                        <li th:unless="${#authorization.expression('isAuthenticated()')}">
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/login" class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header" >
+                                    Login
+                                </button>
+                            </a>
+                        </li>
+                        <li th:if="${#authorization.expression('isAuthenticated()')}">
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/logout" class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header" >
+                                    Logout
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- TILL HERE -->
+        </div>
+    </header>
+
+    <!-- Diese Klasse "my-4" ist für die Div-Gestaltung(Positionierung etc) erstellt -->
     <div class="my-4">
-        <table>
-            <tr>
-                <th>
-                    <h1>Meine Produkte</h1>
-                </th>
-                <td style="padding-left: 50px; ">
-                    <button type="submit" class="btn btn-primary" style="display: inline-block;  width: 140px;">
-                        <a href="/allproducts/createProduct" style="color: white; ">Item erstellen</a> </button>
-                </td>
-                <td style="padding-left: 10px;">
-                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
-                        <a href="/user/mySales" style="color: white">Meine Verkäufe</a>
-                    </button>
-                </td>
-                <td style="padding-left: 10px;">
-                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
-                        <a href="/user/myBoughtProducts" style="color: white">Meine Käufe</a>
-                    </button>
-                </td>
-                <td th:unless="${#authorization.expression('isAuthenticated()')}" style="padding-left: 10px;">
-                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;">
-                        <a href="/user/" style="color: white">Registrieren</a>
-                    </button>
-                </td>
-                <td th:unless="${#authorization.expression('isAuthenticated()')}" style="padding-left: 10px;">
-                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/login" style="color: white">Login</a></button>
-                </td>
-                <td th:if="${#authorization.expression('isAuthenticated()')}" style="padding-left: 10px;">
-                    <button type="submit" class="btn btn-primary" style="display: inline-block; width: 140px;"><a href="/logout" style="color: white">Logout</a></button>
-                </td>
-            </tr>
-        </table>
+        <!-- Die Klasse "bigfont2" ist für die Gestaltung der Überschrift erstellt -->
+        <h1 class="bigfont2">Meine Produkte</h1>
     </div>
+    <!-- Die Klasse "table" ist für die entsprechende Tabelle erstellt, um sie zu designen -->
     <table class="table">
-        <tr th:each="product : ${myProducts}">
-            <td>
-                <a th:href="${'/allproducts/' + product.productId}"th:text="${product.name}"></a>
-                <br>
-                <a th:text="${product.price}"></a> <a> € </a>
-                <br>
-                <a> Products Available: </a><a th:text="${product.numberAvailable}"></a>
-                <br>
-                <a> Products Sold: </a><a th:text="${product.numberSold}"></a>
-                <br>
-                <button><a th:href="${'/allproducts/productEdit/' + product.productId}">Bearbeiten</a></button>
+        <!-- Die Klasse "product-name" ist für die entsprechende Tabelle erstellt, um sie weiter in Details zu designen -->
+        <tr class="product-name">
+            <th style="text-align: center">Produktname</th>
+            <th style="text-align: center">Preis</th>
+            <th style="text-align: center">Anzahl Verfügbar</th>
+            <th style="text-align: center">Anzahl Verkauft</th>
+        </tr>
+        <!-- Die Klasse "product-info1" ist für die Infos des Produkts erstellt, um sie zu designen -->
+        <!-- Mit Thymeleaf werden alle Informationen aus der Datenbank genommen und als Text ausgegeben. -->
+        <tr class="product-info1" th:each="product : ${myProducts}">
+            <td><a th:href="${'/allproducts/' + product.productId}" th:text="${product.name}"></a></td>
+            <td style="text-align: center" th:text="${product.price}">€</td>
+            <td style="text-align: center" th:text="${product.numberAvailable}"></td>
+            <td style="text-align: center" th:text="${product.numberSold}"></td>
+            <td style="padding-right: 0px">
+                <a th:href="${'/allproducts/productEdit/' + product.productId}"><button>Bearbeiten</button></a>
+                <a th:href="${'/user/deleteProduct/' + product.productId}"><button>Löschen</button></a>
             </td>
         </tr>
     </table>
     <div>
         <br>
         <br>
-        <p class="small" style="display: inline-block; width: 350px; height:20px; background-color: ghostwhite" >
-            <a href="/allproducts/" style="color:darkviolet"> zurück zum Menü</a>
+        <!-- Die Klasse "small" ist für die Gestaltung dex Textes erstellt, um ihn zu designen -->
+        <p class="small" style="display: inline-block; width: 350px; height:20px;" >
+            <!-- Die Klasse "back_to_home" ist für die Gestaltung des Hyperlinks erstellt, um ihn zu designen -->
+            <a href="/allproducts/" class="back_to_home"> zurück zur Startseite</a>
         </p>
     </div>
 </div>

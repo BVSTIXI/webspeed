@@ -1,10 +1,5 @@
 body {
-    /* background-color: rgb(187, 153, 255);
- */
-    /*  height: 4476px;
-        width: 3357px;
-        btn btn-primary
-
+    /* Hier wird das Design des Bodys definiert
      */
     height: auto;
     width: auto;
@@ -18,51 +13,82 @@ body {
     font-size: 15px;
 
 }
-.bigfont{
-    color:#802bb1;
-    font-weight: bold;
-}
 .my-4 {
+    /* Hier wird das Design des Divs "my-4" definiert
+     */
     padding-left: 100px;
     padding-top: 5px;
     float:left;
 }
 
-.btn-primary {
-    background-color: #d1d7e0;
-    border: 1px solid black;
-    font-size: 15px;
-
-
-}
 .button-header {
+    /* Hier wird das Design des Buttons definiert
+     */
     display: inline-block;
     width: 140px;
     background-color: #802bb1;
     border: 1px solid black;
     font-size: 15px;
-    color: black;
+    color: ghostwhite;
     height: 40px;
     border-radius: 5px;
     cursor: pointer;
 
 }
 .button-header:hover {
+    /* Hier wird das Design des Buttons definiert, wenn sich der Mauszeiger auf dem Button befindet
+     */
     background-color: #564f6f;
 
 }
 .button-header-font{
+    /* Hier wird das Design der Schriftart des Buttons definiert */
     color:white;
 }
 .button-header-font:hover{
+    /* Hier wird das Design der Schriftart des Buttons definiert, wenn sich der Mauszeiger auf dem Button befindet */
     color:black;
 }
 .button-header::placeholder {
+    /* Hier wird das Design des Platzhalters des Buttons definiert */
     color:black;
+}
+
+.button-header-2 {
+    /* Hier wird das Design des Buttons definiert , ähnlich wie beim "button-header-2", aber die Höhe beträgt mehr px */
+    display: inline-block;
+    width: 140px;
+    background-color: #802bb1;
+    border: 1px solid black;
+    font-size: 15px;
+    color: ghostwhite;
+    height: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.button-header-2:hover {
+    /* Hier wird das Design des Buttons definiert, wenn sich der Mauszeiger auf dem Button befindet
+    */
+    background-color: #564f6f;
+
+}
+.button-header-2-font{
+    /* Hier wird das Design der Schriftart des Buttons definiert */
+    color:white;
+}
+.button-header-2-font:hover{
+    /* Hier wird das Design der Schriftart des Buttons definiert, wenn sich der Mauszeiger auf dem Button befindet */
+    color:black;
+}
+.button-header-2::placeholder {
+    /* Hier wird das Design des Platzhalters des Buttons definiert */
+    color: black;
 }
 
 
 .btn-search {
+    /* Hier wird das Design des Buttons fürs Suchfeld definiert   */
     background-color: #802bb1;
     border: 1px solid black;
     font-size: 15px;
@@ -73,6 +99,7 @@ body {
 
 }
 .btn-search:hover{
+    /* Hier wird das Design des Buttons fürs Suchfeld definiert, wenn sich der Mauszeiger auf dem Button befindet  */
     background-color: #564f6f;
     color: #d1d7e0;
     cursor: pointer;
@@ -80,45 +107,51 @@ body {
 
 }
 .search-field {
+    /* Hier wird das Design des Suchfeldes definiert   */
     border: 1px solid black;
     border-radius: 5px;
     background-color: #4c495d;
 
 }
 .search-field:hover{
+    /* Hier wird das Design des Suchfeldes definiert, wenn sich der Mauszeiger auf dem Button befindet   */
     background-color: white;
     color:#802bb1;
 }
 .search-field:hover::placeholder{
+    /* Hier wird das Design des Platzhalters des Suchfeldes definiert, wenn sich der Mauszeiger auf dem Button befindet */
     color:#2d283e;
 }
 .search-field::placeholder{
+    /* Hier wird das Design des Platzhalters des Suchfeldes definiert */
     color: #d1d7e0;
 }
 
 
 
 .product-name {
-    color:#802bb1;
-    font-weight: bold;
-}
-.product-info{
+    /* Hier wird das Design der Produkttabelle definiert */
     color:#d1d7e0;
+   font-weight: bold;
 }
-.product-name:hover {
-    color: #d1d7e0;
-    cursor: pointer;
+
+.product-info{
+    /* Hier wird das Design der entsprechenden Produktinformation definiert */
+    color:#d1d7e0;
 }
 .product-info1 {
-    color:#d1d7e0;
+    /* Hier wird das Design der ersten Produktinformationen definiert, analog zur "product-info", falls man die anderen Beiträge anderes designen möchte */
+    color:#802bb1;
 }
 .product-info1:hover {
-    color:#802bb1;
+    /* Hier wird das Design der ersten Produktinformationen definiert, wenn sich der Mauszeiger auf dem Button befindet  */
+    color:#d1d7e0;
 }
 
 
 
 #sidebar {
+    /* Hier wird das Design der  Togglemenu definiert */
     position: fixed;
     width: 30%;
     height: 100%;
@@ -130,9 +163,11 @@ body {
 
 }
 #sidebar:hover{
+    /* Hier wird das Design der  Togglemenu definiert, wenn sich der Mauszeiger auf dem Button befindet */
     cursor: pointer;
 }
 #sidebar li{
+    /* Hier wird das Design der Liste der Togglemenu definiert */
     color:#d1d7e0;
     font-size: 15px;
     padding:30px;
@@ -142,12 +177,14 @@ body {
 }
 
 .toggle-btn {
+    /* Hier wird das Design des Buttons der Togglemenu definiert */
     position: absolute;
     left:105%;
     top: 30px;
 }
 
 .toggle-btn span{
+    /* Hier wird das Design der drei Linien für die Ausführung der Togglemenu definiert */
     display:block;
     background-color:#d1d7e0;
     width:30px;
@@ -159,11 +196,13 @@ body {
 }
 
 #sidebar.active {
+    /* Hier wird die Ergänzung füs Design der Togglemenu definiert */
     left:0;
 
 }
 
 .bigfont2{
+    /* Hier wird das Design für die entsprechende Schriftart definiert */
     color:#802bb1;
     font-weight: bold;
     padding-left: 1px;
@@ -171,7 +210,41 @@ body {
 }
 
 .back_to_home {
+    /* Hier wird das Design für den Button der "Zurück zur Menü" Funktion definiert */
     color:#d1d7e0;
     font-weight:
             bold;font-size: 20px
+}
+.back_to_home:hover {
+    /* Hier wird das Design für den Button der "Zurück zur Menü" Funktion definiert, wenn sich der Mauszeiger auf dem Button befindet */
+    color:#564f6f;
+}
+
+.error_page {
+    /* Hier wird das Design des DIVs für die Fehler-Seiten definiert */
+    height: auto;
+    width: auto;
+    background-size: cover;
+    background-image: url(../images/netzwerk.jpg);
+    padding-left: 250px;
+    padding-top: 20px;
+    font-family: Calibri;
+    font-size: 25px;
+    color:#802bb1;
+    font-weight: bold;
+    background-position-x: 1px;
+}
+
+.my-5 {
+    /* Hier wird das Design des entsprechenden DIVs  definiert */
+    padding-left: 75px;
+    padding-top: 5px;
+
+}
+
+label {
+    /* Hier wird das Design der entsprechenden Formulare  definiert */
+    display: inline-block;
+    width: 5em;
+
 }

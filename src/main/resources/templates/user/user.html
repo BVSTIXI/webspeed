@@ -1,62 +1,138 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"      layout:decorate="~{layout}">
+<head>
+    <!-- Hier wird die Verbindung zur CSS-Datei erstellt -->
+    <link rel="stylesheet" href="" th:href="@{/CSS/mystyle.css}" />
+    <!-- Hier wird der Javascript für die Togglemenü addiert-->
+    <script type="text/javascript" >
+        function togglemenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
+</head>
 <body>
-<div layout:fragment="content">
-    <div class="my-4">
-        <h1> REGISTRIERUNG </h1>
+<!-- Die Klasse "maincontent" ist für die Gestaltung des Haupt-DIVs erstellt -->
+<div layout:fragment="content" style="position: absolute" class="maincontent">
+    <header>
+        <div >
+            <!-- FROM -->
+            <!-- Dieser Java-Script wird für die Togglemenu eingebaut -->
+            <div id="sidebar" onclick="togglemenu()">
+                <!-- Diese Klasse ist für die drei Linien der Togglemenü erstellt -->
+                <div class="toggle-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
 
-        <p class="small">
-            <a href="/allproducts/" style="color:darkviolet"> zurück zum Menü</a>
-        </p>
+                <div>
+                    <ul>
+                        <li>
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/allproducts/createProduct"  class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header" >
+                                    Produkt einstellen </button>
+                            </a>
+                        </li>
+                        <li>
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/user/myProducts" class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header" >
+                                    Meine Produkte
+                                </button>
+                            </a>
+                        </li>
+                        <li>
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/user/mySales" class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header">
+                                    Meine Verkäufe
+                                </button>
+                            </a>
+                        </li>
+                        <li>
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/user/myBoughtProducts" class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header">
+                                    Meine Käufe
+                                </button>
+                            </a>
+                        </li>
+                        <li th:unless="${#authorization.expression('isAuthenticated()')}">
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/login" class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header" >
+                                    Login
+                                </button>
+                            </a>
+                        </li>
+                        <li th:if="${#authorization.expression('isAuthenticated()')}">
+                            <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+                            <a href="/logout" class="button-header-font">
+                                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                                <button type="submit" class="button-header" >
+                                    Logout
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
 
+    <!-- Diese Klasse "my-5" ist für die Div-Gestaltung(Positionierung etc) erstellt -->
+    <div class="my-5">
+        <!-- Die Klasse "bigfont2" ist für die Gestaltung der Überschrift erstellt -->
+        <h1 class="bigfont2" > REGISTRIERUNG </h1>
     </div>
 
-    <div>
-        <h3>Bitte registrieren Sie sich.</h3>
-
-<!--        <div>-->
-<!--            <table class="table">-->
-
-<!--                <tr>-->
-<!--                    <th>Id</th>-->
-<!--                    <th>Name</th>-->
-<!--                    <th>Username</th>-->
-<!--                </tr>-->
-
-<!--                <tr th:each="user : ${users}">-->
-<!--                    <td th:text="${user.id}"></td>-->
-<!--                    <td th:text="${user.name}"></td>-->
-<!--                    <td th:text="${user.userName}"></td>-->
-<!--                </tr>-->
-<!--            </table>-->
-<!--        </div>-->
-
+    <div style="padding-left: 90px">
+        <!-- Die Klasse "bigfont2" ist für die Gestaltung der Überschrift erstellt -->
+        <h3 class="bigfont2" style="margin-left: -2px;margin-right: 2px;">
+            Bitte registrieren Sie sich.</h3>
+        <!-- Die Klasse "form-inline" wurde für die Hauptgestaltung der Form genommen  -->
         <form  th:action="${'/user/'}" method="post" class="form-inline">
             <table>
                 <tr>
                     <th>
-                        <input name="name" type="text" placeholder="Name" required class="form-control mr-2">
+                        <!-- Die Klasse "form-control mr-2" wurde für die Eingabe-Felder der Form genommen  -->
+                        <input name="name" type="text" placeholder="Name" required class="form-control mr-2" >
                     </th>
                 </tr>
                 <tr>
                     <th>
+                        <!-- Die Klasse "form-control mr-2" wurde für die Eingabe-Felder der Form genommen  -->
                         <input name="userName" type="text" placeholder="Username" required class="form-control mr-2">
                     </th>
                 </tr>
                 <tr>
                     <th>
+                        <!-- Die Klasse "form-control mr-2" wurde für die Eingabe-Felder der Form genommen  -->
                         <input name="password" type="password" placeholder="Passwort" required class="form-control mr-2">
                     </th>
                 </tr>
                 <tr>
                     <th>
-                        <button type="submit" class="btn btn-primary">Erstellen</button>
+                        <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                        <button type="submit" class="button-header">Erstellen</button>
                     </th>
                 </tr>
             </table>
 
         </form>
-
+<div>
+    <!-- Die Klasse "small" ist für die Gestaltung dex Textes erstellt, um ihn zu designen -->
+    <p class="small" style="display: inline-block; width: 350px; height:20px">
+        <!-- Die Klasse "back_to_home" ist für die Gestaltung des Hyperlinks erstellt, um ihn zu designen -->
+        <a href="/allproducts/" class="back_to_home"> zurück zur Startseite</a>
+    </p>
+</div>
 
     </div>
 

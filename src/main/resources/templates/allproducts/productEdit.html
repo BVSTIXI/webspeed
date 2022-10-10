@@ -2,25 +2,138 @@
 <html xmlns:th ="http://www.thymeleaf.org"
       xmlns:layout = "http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
+<head>
+  <!-- Hier wird die Verbindung zur CSS-Datei erstellt -->
+  <link rel="stylesheet" href="" th:href="@{/CSS/mystyle.css}" />
+  <!-- Hier wird der Javascript für die Togglemenü addiert-->
+  <script type="text/javascript" >
+    function togglemenu() {
+      document.getElementById('sidebar').classList.toggle('active');
+    }
+  </script>
 
+
+  <!-- Hier wird die Verbindung zur CSS-Datei für die Gestaltung der Titeln erstellt -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+  <!-- Hier wird der Javascript für die Gestaltung der Titteln addiert-->
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <!-- Hier wird der Javascript für die Togglemenü addiert-->
+  <script>
+    $( function() {
+      $( document ).tooltip();
+    } );
+  </script>
+
+</head>
 <body>
-<div layout:fragment="content">
+<!-- Die Klasse "maincontent" ist für die Gestaltung des Haupt-DIVs erstellt -->
+<div layout:fragment="content" style="position: absolute" class="maincontent">
+  <header>
+    <div >
+      <!-- FROM -->
+      <!-- Dieser Java-Script wird für die Togglemenu eingebaut -->
+      <div id="sidebar" onclick="togglemenu()">
+        <!-- Diese Klasse ist für die drei Linien der Togglemenü erstellt -->
+        <div class="toggle-btn">
+          <span></span>
+          <span></span>
+          <span></span>
 
-  <div style="width: auto; height:1000px; background-color: white">
+        </div>
+
+        <div>
+          <ul>
+            <li>
+              <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+              <a href="/allproducts/createProduct"  class="button-header-font">
+                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                <button type="submit" class="button-header" >
+                  Produkt einstellen </button>
+              </a>
+            </li>
+            <li>
+              <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+              <a href="/user/myProducts" class="button-header-font">
+                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                <button type="submit" class="button-header" >
+                  Meine Produkte
+                </button>
+              </a>
+            </li>
+            <li>
+              <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+              <a href="/user/mySales" class="button-header-font">
+                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                <button type="submit" class="button-header">
+                  Meine Verkäufe
+                </button>
+              </a>
+            </li>
+            <li>
+              <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+              <a href="/user/myBoughtProducts" class="button-header-font">
+                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                <button type="submit" class="button-header">
+                  Meine Käufe
+                </button>
+              </a>
+            </li>
+            <li th:unless="${#authorization.expression('isAuthenticated()')}">
+              <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+              <a href="/user" class="button-header-font">
+                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                <button type="submit" class="button-header">
+                  Registrieren
+                </button>
+              </a>
+            </li>
+            <li th:unless="${#authorization.expression('isAuthenticated()')}">
+              <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+              <a href="/login" class="button-header-font">
+                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                <button type="submit" class="button-header" >
+                  Login
+                </button>
+              </a>
+            </li>
+            <li th:if="${#authorization.expression('isAuthenticated()')}">
+              <!-- Die Klasse "button-header-font" ist für die Schriftart des Buttons erstellt, um ihn zu designen -->
+              <a href="/logout" class="button-header-font">
+                <!-- Die Klasse "button-header" ist für den Button erstellt, um ihn zu designen -->
+                <button type="submit" class="button-header" >
+                  Logout
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div style="padding-left: 10px">
     <hr/>
-    <h2>Produkt bearbeiten</h2>
+    <!-- Die Klasse "bigfont2" ist für die Gestaltung der Überschrift erstellt -->
+    <h2 class="bigfont2" style="font-size: 2.5rem">Produkt bearbeiten</h2>
     <div style="width: auto; height:1000px">
-      <form th:action="${'/allproducts/productEdit/' + products.productId}" method="post" class="form-inline"  style="display: inline-block; width: 350px; height:700px; background-color: white">
-        <div style="width: auto; height:45px;" th:each="product:${products}">
-          <input name="name" type="text" placeholder="Produktname" th:value="${product.name}" required class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
+      <!-- Die Klasse "form-inline" wurde für die Hauptgestaltung der Form genommen  -->
+      <!-- Die Werte in den Feldern werden durch Thymeleaf aus der Datenbank genommen. -->
+      <form th:action="${'/allproducts/productEdit/' + products.productId}" method="post" class="form-inline"  style="display: inline-block; width: 350px; height:700px">
+        <div style="width: auto; height:75px;" th:each="product:${products}">
+          <h6 style="color: white">Produktname</h6>
+          <input name="name" type="text" placeholder="Produktname" th:value="${product.name}" required class="form-control mr-2" style="width:350px; height:38px; background-color: ghostwhite">
         </div>
-        <div  style="width: auto; height:45px;" th:each="product:${products}">
-          <input name="price" type="number" min="0" placeholder="Preis" th:value="${product.price}" required class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
+        <div  style="width: auto; height:75px;" th:each="product:${products}">
+          <h6 style="color: white">Preis</h6>
+          <input name="price" type="number" min="0" placeholder="Preis" th:value="${product.price}" required class="form-control mr-2" style="width:350px; height:38px; background-color: ghostwhite">
         </div>
-        <div style="width: auto; height:45px;" th:each="product:${products}">
+        <div style="width: auto; height:75px;" th:each="product:${products}">
+          <h6 style="color: white">Beschreibung</h6>
           <input name="description" type="text" placeholder="Beschreibung" th:value="${product.description}" required class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
         </div>
-        <div style="width: auto; height:45px;" th:each="product:${products}">
+        <div style="width: auto; height:75px;" th:each="product:${products}">
+          <h6 style="color: white">Zustand</h6>
           <select name="condition" class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
             <option value="">--Zustand auswaehlen--</option>
             <option value="sehr gut" th:selected="${'sehr gut' == product.condition}">Sehr gut</option>
@@ -28,7 +141,8 @@
             <option value="unterdurchschnittlich" th:selected="${'unterdurchschnittlich' == product.condition}">Unterdurchschnittlich</option>
           </select>
         </div>
-        <div style="width: auto; height:45px;" th:each="product:${products}">
+        <div style="width: auto; height:75px;" th:each="product:${products}">
+          <h6 style="color: white">Kategorie</h6>
           <select name="category" class="form-control mr-2" th:value="${product.category}" style=" width:350px; height:38px; background-color: ghostwhite">
             <option value="">--Kategorie auswaehlen--</option>
             <option value="autos" th:selected="${'autos' == product.category}">Auto, Rad & Boot</option>
@@ -38,18 +152,26 @@
             <option value="hobby" th:selected="${'hobby' == product.category}">Freizeit, Hobby & Nachbarschaft</option>
           </select>
         </div>
-        <div style="width: auto; height:45px;" th:each="product:${products}">
+        <div style="width: auto; height:75px;" th:each="product:${products}">
+          <h6 style="color: white">Anzahl der verfügbaren Produkten</h6>
           <input name="numberAvailable" type="number" min="0" placeholder="Number Available" th:value="${product.numberAvailable}" required class="form-control mr-2" style=" width:350px; height:38px; background-color: ghostwhite">
         </div>
-        <div>
-          <button type="submit" class="btn btn-primary">Eintragen</button>
+        <!-- Es wird überprüft, ob der aktuell eingeloggte Nutze der Verkäufer dieses Produktes ist und somit die Änderung vornehmen kann. -->
+        <div th:each="product:${products}"  style="padding-top: 20px">
+          <button th:if="${product.seller.getUserName() == #authentication.getName()}" type="submit" class="button-header">Eintragen</button>
+        </div>
+        <!-- Wenn der Nutzer nicht der Verkäufer des Produktes ist, wird nur ein Text angezeigt. Somit wird verhindert, dass Nutzer über das Eingeben der URL in die Suchleise, Änderungen vornehmen können. -->
+        <div th:each="product:${products}">
+          <a style="color:white" th:unless="${product.seller.getUserName() == #authentication.getName()}"> Sie sind nicht der Verkäufer dieses Produktes </a>
         </div>
 
         <div>
           <br>
           <br>
-          <p class="small" style="display: inline-block; width: 350px; height:20px; background-color: ghostwhite" >
-            <a href="/allproducts/" style="color:darkviolet"> zurück zum Menü</a>
+          <!-- Die Klasse "small" ist für die Gestaltung dex Textes erstellt, um ihn zu designen -->
+          <p class="small" style="display: inline-block; width: 350px; height:20px" >
+            <!-- Die Klasse "back_to_home" ist für die Gestaltung des Hyperlinks erstellt, um ihn zu designen -->
+            <a href="/allproducts/" class="back_to_home"> zurück zur Startseite</a>
           </p>
         </div>
       </form>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <link rel="stylesheet" href="" th:href="@{/CSS/mystyle.css}" />
+  <script type="text/javascript" >
+    function togglemenu() {
+      document.getElementById('sidebar').classList.toggle('active');
+    }
+  </script>
+</head>
+<body >
+<div layout:fragment="content" style="position: absolute" class="maincontent">
+  <header>
+    <div >
+      <!-- FROM -->
+      <div id="sidebar" onclick="togglemenu()">
+        <div class="toggle-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+
+        </div>
+
+        <div>
+          <ul>
+            <li>
+              <a href="/allproducts/createProduct"  class="button-header-font">
+                <button type="submit" class="button-header" >
+                  Produkt einstellen </button>
+              </a>
+            </li>
+            <li>
+              <a href="/user/myProducts" class="button-header-font">
+                <button type="submit" class="button-header" >
+                  Meine Produkte
+                </button>
+              </a>
+            </li>
+            <li>
+              <a href="/user/mySales" class="button-header-font">
+                <button type="submit" class="button-header">
+                  Meine Verkäufe
+                </button>
+              </a>
+            </li>
+            <li>
+              <a href="/user/myBoughtProducts" class="button-header-font">
+                <button type="submit" class="button-header">
+                  Meine Käufe
+                </button>
+              </a>
+            </li>
+            <li th:unless="${#authorization.expression('isAuthenticated()')}">
+              <a href="/user" class="button-header-font">
+                <button type="submit" class="button-header">
+                  Registrieren
+                </button>
+              </a>
+            </li>
+            <li th:unless="${#authorization.expression('isAuthenticated()')}">
+              <a href="/login" class="button-header-font">
+                <button type="submit" class="button-header" >
+                  Login
+                </button>
+              </a>
+            </li>
+            <li th:if="${#authorization.expression('isAuthenticated()')} ">
+              <a href="/logout" class="button-header-font">
+                <button type="submit" class="button-header" >
+                  Logout
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="my-4">
+    <h1 class="bigfont2">Produkt löschen</h1>
+    <div style="width: auto; height:1000px">
+      <form th:action="${'/user/deleteProduct/' + products.productId}" method="post" class="form-inline">
+        <table class="table">
+          <tr class="product-name" th:each="product : ${products}">
+            <td>
+              <a class="product-info1" th:text="${product.name}"></a>
+              <br>
+              <a class="product-info" th:text="${product.price}"></a> <a> € </a>
+              <br>
+              <a class="product-info" th:text="${product.numberAvailable}"></a> <a> Stück sind verfügbar</a>
+              <br>
+              <a class="product-info" th:text="${product.numberSold}"></a> <a> Stück sind verkauft</a>
+            </td>
+          </tr>
+        </table>
+        <div th:each="product : ${products}">
+          <button th:if="${product.seller.getUserName() == #authentication.getName()}" type="submit">Produkt Löschen</button>
+        </div>
+      </form>
+      <div th:each="product:${products}">
+        <a style="color:white" th:unless="${product.seller.getUserName() == #authentication.getName()}"> Sie sind nicht der Verkäufer dieses Produktes </a>
+      </div>
+      <p class="small" style="display: inline-block; width: 350px; height:20px">
+        <!-- Die Klasse "back_to_home" ist für die Gestaltung des Hyperlinks erstellt, um ihn zu designen -->
+        <a href="/allproducts/" class="back_to_home"> zurück zur Startseite</a>
+      </p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

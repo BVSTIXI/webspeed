@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
+//Dummy Produkt, um ein Produkt mit allen relevanten Attributen erstellen zu können
 public class ProductForm {
     @Getter
     @Setter

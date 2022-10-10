@@ -3,10 +3,22 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <!-- Hier wird die Verbindung zur CSS-Datei erstellt -->
+    <link rel="stylesheet" href="" th:href="@{/CSS/mystyle.css}" />
+    <!-- Hier wird der Javascript für die Togglemenü addiert-->
+    <script type="text/javascript" >
+        function togglemenu() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
 </head>
-<body>
-<h1>:-(</h1>
-<h2>Something went wrong and we couldn't complete your request.</h2>
-<a href="/">Go back to home page</a>
+<!-- Die Klasse "error_page" ist für die Gestaltung des Bodys erstellt -->
+<body class="error_page" >
+<div>
+    <h1 >Sorry</h1>
+    <h2>Something went wrong and we couldn't complete your request.</h2>
+    <!-- Die Klasse "back_to_home" ist für die Gestaltung des Hyperlinks erstellt, um ihn zu designen -->
+    <a href="/" class="back_to_home">Go back to home page</a>
+</div>
 </body>
 </html>

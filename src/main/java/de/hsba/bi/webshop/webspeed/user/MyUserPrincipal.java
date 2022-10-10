@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+//Mit dieser Klasse kann über die Funktion SecurityContextHolder.getContext().getAuthentication().getPrincipal() in User.getCurrentUsername() der Username des aktuell angemeldeten Users gefunden werden kann
 public class MyUserPrincipal implements UserDetails {
     private final User user;
 

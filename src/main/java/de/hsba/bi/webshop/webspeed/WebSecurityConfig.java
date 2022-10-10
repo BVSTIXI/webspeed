@@ -11,12 +11,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+/*TODO productEdit nur für angemeldete Nutzer zugänglich machen*/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
             .antMatchers("/").permitAll()
-                .antMatchers(HttpMethod.GET, "/user/myProducts","/user/mySales", "/user/myBoughtProducts", "/allproducts/createProduct").authenticated()
+                .antMatchers(HttpMethod.GET, "/user/myProducts","/user/mySales", "/user/myBoughtProducts", "/allproducts/createProduct", "/allproducts/productEdit/*", "/user/sendConfirm/*","/user/deleteProduct/*").authenticated()
                 .antMatchers(HttpMethod.GET, "/allproducts/*","/user/").permitAll()
                 .anyRequest().permitAll()
                 .and()

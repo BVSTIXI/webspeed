@@ -4,10 +4,10 @@ import de.hsba.bi.webshop.webspeed.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+//Dieses Objekt stellt ein kaufbares Produkt dar
 @Entity
 @NoArgsConstructor
 public class Product implements Comparable<Product> {
@@ -57,28 +57,6 @@ public class Product implements Comparable<Product> {
     @Getter
     private User seller;
 
-    /*
-    @Getter
-    @Setter
-    private String seller;
-
-    @Getter
-    @Setter
-    private String buyer;
-
-    @Getter
-    @Setter
-    private boolean sold;
-
-    @Getter
-    @Setter
-    private boolean shipped;
-
-    @Getter
-    @Setter
-    private boolean de.hsba.bi.webshop.webspeed.sale;
-    */
-
     //Konstruktor für den TestDataCreator
     public Product(String name, BigDecimal price, String description, String category, String condition, Double numberAvailable, Double numberSold, User seller){
         this.name = name;
@@ -92,6 +70,7 @@ public class Product implements Comparable<Product> {
 
     }
 
+    //Konstruktor für den eigentlichen Anwendungsbetrieb
     public Product(String name, BigDecimal price, String description, Double numberAvailable, User seller) {
         this.name = name;
         this.price = price;
@@ -101,11 +80,13 @@ public class Product implements Comparable<Product> {
         this.seller = seller;
     }
 
+
     @Override
     public int compareTo(Product other) {
         return this.name.compareTo(other.name);
     }
-    //TODO Warum returnt das den Name und nicht den userName? Brauchen wir den Name überhaupt? ~Niklas
+
+    //gibt den Namen des aktuellen Nutzerobjekts wieder
     @Override
     public String toString() {
         return name;
