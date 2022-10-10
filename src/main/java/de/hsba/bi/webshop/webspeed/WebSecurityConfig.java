@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-/*TODO productEdit nur für angemeldete Nutzer zugänglich machen*/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
